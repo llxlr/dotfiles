@@ -1,0 +1,194 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "#1865f5",
+          "properties": {
+            "alpine": "\uf300",
+            "arch": "\uf303",
+            "centos": "\uf304",
+            "debian": "\uf306",
+            "elementary": "\uf309",
+            "fedora": "\uf30a",
+            "gentoo": "\uf30d",
+            "linux": "\ue712",
+            "macos": "\uf179 ",
+            "manjaro": "\uf312",
+            "mint": "\uf30f",
+            "opensuse": "\uf314",
+            "raspbian": "\uf315",
+            "ubuntu": "\uf31c ",
+            "windows": "\uf871 ",
+            "wsl": "\ue712",
+            "wsl_separator": " on "
+          },
+          "style": "diamond",
+          "template": "{{ if .WSL }}WSL at {{ end }}{{ .Icon }}",
+          "type": "os"
+        },
+        {
+          "foreground": "#E06C75",
+          "style": "plain",
+          "template": "admin",
+          "type": "root"
+        },
+        {
+          "foreground": "#100e23",
+          "properties": {
+            "display_user": true,
+            "display_host": false
+          },
+          "style": "diamond",
+          "template": "{{ if .SSHSession }}\uF817 {{ end }}{{ if .Root }}<#801dae>@</><#1865f5>{{ .HostName }}</>{{ else }}<#45F1C2>{{ .UserName }}</><#801dae>@</><#1865f5>{{ .HostName }}</>{{ end }} ",
+          "type": "session"
+        },
+        {
+          "foreground": "#55B9C4",
+          "properties": {
+            "folder_separator_icon": "/",
+            "style": "full",
+            "mapped_locations": {
+              "C:/Users/i/AppData/Local/Temp": "\uf114",
+              "D:/Projects/GitHub": "\ue708",
+              "D:/Projects/PyCharmProjects": "\ue235",
+              "D:/Projects/R": "\ufcd2",
+              "D:/Projects/www": "\ufa9e",
+              "D:/envs/gopath/src": "\ue724",
+              "E:/OneDrive": "\ue762",
+              "E:/Games": "\ue25f",
+              "E:/Documents/Markdown": "\ue73e"
+            }
+          },
+          "style": "plain",
+          "template": "\uf07b {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "blue",
+          "style": "plain",
+          "template": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }}\uf487 {{ if .Name }}{{ .Name }}{{ end }} {{.Version}}{{ end }}{{ end }} ",
+          "type": "project"
+        },
+        {
+          "foreground": "#000000",
+          "style": "plain",
+          "template": " \uFD03 {{ .EnvironmentName }} ",
+          "type": "az"
+        },
+        {
+          "foreground": "#ffffff",
+          "style": "plain",
+          "template": " \uE7AD {{ .Profile }}{{if .Region }}@{{ .Region }}{{ end }} ",
+          "type": "aws"
+        },
+        {
+          "style": "plain",
+          "template": " \uE77F {{ .Full }} ",
+          "type": "dotnet"
+        },
+        {
+          "foreground": "#C678DD",
+          "properties": {
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "<#ffffff>on</> {{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "type": "git"
+        },
+        {
+          "foreground": "#98C379",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "<#ffffff>via</> \ue781 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
+          "type": "node"
+        },
+        {
+          "foreground": "#FFE873",
+          "properties": {
+            "fetch_version": true,
+            "display_virtual_env": true,
+            "display_default": true,
+            "display_mode": "context"
+          },
+          "style": "plain",
+          "template": "<#ffffff>via</> 🐍 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#906cff>({{ .Venv }})</>{{ end }}{{ end }} ",
+          "type": "python"
+        },
+        {
+          "foreground": "#7FD5EA",
+          "style": "plain",
+          "template": "<#ffffff>via</> \uFCD1 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "type": "go"
+        },
+        {
+          "foreground": "blue",
+          "style": "plain",
+          "template": "<#ffffff>via</> \ufcd2 {{ .Full }} ",
+          "type": "r"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "white",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\uf64e {{ .FormattedMs }} ",
+          "type": "executiontime"
+        },
+        {
+          "foreground": "#23d18b",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "{{ if gt .Code 0 }}<#ff0000>\uf00d</>{{ else }}\uf42e{{ end }} ",
+          "type": "exit"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#63F08C",
+          "style": "plain",
+          "template": "{{ if .Root }}#{{ else }}${{ end }}",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "tooltips": [
+    {
+      "type": "git",
+      "tips": ["git", "g"],
+      "style": "diamond",
+      "foreground": "#193549",
+      "background": "#fffb38",
+      "leading_diamond": "",
+      "trailing_diamond": "",
+      "template": "{{ .HEAD }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}",
+      "properties": {
+        "fetch_status": true,
+        "fetch_upstream_icon": true
+      }
+    }
+  ],
+  "console_title_template": "{{ .Folder }}{{if .Root}} :: Admin{{end}} :: {{.Shell}}",
+  "final_space": true,
+  "version": 2
+}

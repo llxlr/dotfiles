@@ -1,0 +1,17 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = llxlr
+	email = i@xhlr.top
+[init]
+	defaultBranch = master
+[http]
+	sslverify = false
+[diff "pandoc"]
+	textconv = pandoc --to=markdown
+	prompt = false
+[alias]
+	wdiff = diff --word-diff=color --unified=1

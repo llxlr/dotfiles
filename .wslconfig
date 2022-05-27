@@ -1,0 +1,9 @@
+[wsl2]
+# kernel=C:\\temp\\myCustomKernel
+# kernelCommandLine=
+memory=2GB # Limits VM memory in WSL 2 to 4 GB
+processors=2 # Makes the WSL 2 VM use two virtual processors
+localhostForwarding=true
+swap=1GB
+swapFile=%USERPROFILE%\AppData\Local\Temp\swap.vhdx
+# guiApplications=false

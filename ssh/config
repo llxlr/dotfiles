@@ -1,0 +1,37 @@
+# 对 .ssh 目录设置 700 权限
+# 对 id_rsa, authorized_keys 文件设置 600 权限
+# 对 id_rsa.pub, known_hosts 文件设置 644 权限
+# chmod -R 700 ~/.ssh/
+# chmod 600 ~/.ssh/authorized_keys
+# ssh-keygen -t rsa -C "<email>"
+# ssh-keygen -t rsa -m PEM -C "<email>"
+# ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
+# scp ~/.ssh/id_rsa.pub root@host:/root/.ssh/authorized_keys
+
+# ssh -T git@github.com
+Host github
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+
+# ssh -T git@gitee.com
+Host gitee
+    HostName gitee.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+
+Host txc
+    HostName white-album.top
+    Port 22
+    User root
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    IdentityFile ~/.ssh/others/server/id_rsa.pem
+
+Host pi
+    HostName raspberrypi.local
+    Port 22
+    User pi
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    IdentityFile ~/.ssh/others/raspberrypi/id_rsa.pem
