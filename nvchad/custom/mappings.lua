@@ -1,7 +1,6 @@
 local M = {}
 
 M.coderunner = {
-
   n = {
     -- 使用 Ctrl+Alt+n 运行代码
     ["<C-A-n>"] = { "<CMD>lua require'CodeRunner'.run()<CR>", "" },

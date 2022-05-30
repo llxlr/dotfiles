@@ -74,10 +74,10 @@ $batterystyle = 'bar'
     #"motherboard"
     "terminal"
     "pwsh"
-    "pkgs"
+    "pkgs"  # takes more time
     "ps_pkgs"  # takes some time
     "custom_time"  # use custom info line
-    #"uptime"
+    "uptime"
     #"resolution"
     #"theme"
     #"cpu"
