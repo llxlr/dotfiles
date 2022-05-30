@@ -98,7 +98,9 @@ source $ZSH/oh-my-zsh.sh
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -126,7 +128,7 @@ alias nvim-sync="nvim +'hi NormalFloat guibg=#1e222a' +NvChadUpdate +PackerSync"
 # autoenv
 source $HOME/.autoenv/activate.sh
 # autojump
-[[ -s /home/i/.autojump/etc/profile.d/autojump.sh ]] && source /home/i/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 # colorize
 ZSH_COLORIZE_TOOL=pygmentize
@@ -135,6 +137,8 @@ ZSH_COLORIZE_STYLE="colorful"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# TinyTeX
+export PATH=$PATH:$HOME/.TinyTeX/bin/x86_64-linux
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

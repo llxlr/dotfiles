@@ -1,0 +1,19 @@
+#宽度自适应
+set adjust-open "width"
+#字体与字母
+set font "Noto Sans CJK SC Regular 10"
+#隐藏底部状态栏
+set guioptions ""
+#仅显示文件名
+set window-title-basename true
+#增强搜索，实时搜索、
+set incremental-search true
+#粘贴板
+#set selection-clipboard clipboard
+#默认高度
+#set window-height 760
+#默认宽度
+#set window-width 1300
+#反向同步
+set synctex true
+set synctex-editor-command "nvr --remote-silent %f -c %l"
