@@ -239,7 +239,7 @@
                 "icon": "https://www.raspberrypi.org/favicon.ico",
                 "name": "Raspberry Pi",
                 "opacity": 65,
-                "startingDirectory": "$HOME",
+                "startingDirectory": "~",
                 "suppressApplicationTitle": true,
                 "useAcrylic": false
             },

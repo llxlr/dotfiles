@@ -19,6 +19,5 @@ envs_dirs:
 pkgs_dirs:
   - C:/Users/i/AppData/Local/Temp/conda/pkgs
   - /tmp/conda/pkgs
-  - /mnt/c/Users/i/AppData/Local/Temp/conda/pkgs
 report_errors: false
 auto_activate_base: false
