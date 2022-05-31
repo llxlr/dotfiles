@@ -15,6 +15,7 @@
 
 # UTF8
 #chcp 65001
+[console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 $PSDefaultParameterValues["*:Encoding"] = "utf8"
 $env:PYTHONIOENCODING = "utf-8"
 
@@ -55,6 +56,7 @@ If (!(Test-Path Variable:PSise)) {
 }
 Import-Module ZLocation
 Import-Module npm-completion
+Import-Module PSFzf
 if (Get-Module -ListAvailable -Name Get-Quote) {
     Import-Module Get-Quote
     Set-Alias fortune Get-Quote
@@ -70,8 +72,8 @@ Set-PSReadLineKeyHandler -Key "Tab" -Function MenuComplete
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 # 设置向下键为前向搜索历史纪录
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-# 设置 Ctrl+d 为退出 PowerShell
-Set-PSReadlineKeyHandler -Key "Ctrl+d" -Function ViExit
+# 设置 Ctrl+d 为菜单补全和 IntelliSense
+Set-PSReadlineKeyHandler -Key "Ctrl+d" -Function MenuComplete
 # 设置 Ctrl+z 为撤销
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
@@ -214,5 +216,5 @@ function Get-IPv6Routes {
 Set-Alias getipv6 Get-IPv6Routes
 
 # 获取天气
-function Get-Weather { curl "wttr.in?M&lang=zh-cn&format=4" }
-Set-Alias gwt Get-Weather
+function Get-Weather { curl "wttr.in?0&lang=zh-cn" }
+Set-Alias gw Get-Weather
