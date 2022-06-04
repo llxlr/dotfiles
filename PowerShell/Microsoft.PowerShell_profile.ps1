@@ -39,7 +39,7 @@ if ($path.split("\")[-1] -eq "Windows" -xor $path.split("\")[-1] -eq "System32")
 # Conda
 (& "D:\envs\conda\miniforge3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
 # ohmyposh
-# $env:POSH_THEMES_PATH\star.omp.json
+#$env:POSH_THEMES_PATH\star.omp.json
 oh-my-posh init pwsh --config ~/.omp.json | Invoke-Expression
 Enable-PoshTooltips
 
@@ -86,19 +86,19 @@ Set-Alias whereis WhereFile
 function OpenCurrentFolder {
     param
     (
-        $Path = '.'
+        $Path = "."
     )
     Invoke-Item $Path
 }
 Set-Alias e OpenCurrentFolder
 
 # 返回上级目录
-function GoBack { Set-Location .. }
-Set-Alias .. GoBack
+function GoBack { Set-Location ".." }
+Set-Alias ".." GoBack
 
 # Colorful Git Log
 function GitLogPretty {
-    git.exe log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all
+    git.exe log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all
 }
 Set-Alias glp GitLogPretty
 
@@ -111,30 +111,32 @@ function WebServer { python.exe -m http.server --bind 127.0.0.1 }
 Set-Alias start-server WebServer
 
 # Make 工程管理
-function MakeFile { mingw32-make.exe $args }
-Set-Alias make MakeFile
+function Make { mingw32-make.exe $args }
 
 # 同步 NvChad 和 Packer
-function NvimSync { nvim.exe +'hi NormalFloat guibg=#1e222a' +NvChadUpdate +PackerSync }
-Set-Alias nvim-sync NvimSync
+function Nvim-Sync { nvim.exe +"hi NormalFloat guibg=#1e222a" +NvChadUpdate +PackerSync }
 
 # Neovim
-function NVI { nvim.exe $args }
-Set-Alias vi NVI
+If (Test-Path Alias:vi) { Remove-Item Alias:vi }
+function VI { nvim.exe $args }
 
 # figlet
-function Figlet4Go {
+function Figlet {
     #go install github.com/mbndr/figlet4go/cmd/figlet4go@latest
     figlet4go.exe -str "$args" -font "larry3d" -colors "red;yellow;green;blue;magenta;cyan"
 }
-Set-Alias figlet Figlet4Go
 
 # music-player
-Set-Alias mpr music-player.exe
+Set-Alias MPR music-player.exe
 
 # wpa2gen
 function Wpa2Gen { python.exe $(where.exe wpa2gen.py) }
-Set-Alias wpa2gen Wpa2Gen
+
+# pipe
+function Pipe { python.exe $(where.exe maze.py) $args }
+
+# JaxoDraw
+function JaxoDraw { java.exe -jar $(where.exe jaxodraw.jar) }
 
 # 更新系统组件
 function Update-Packages {
@@ -145,8 +147,8 @@ function Update-Packages {
 
     # 更新 pip
     Write-Host "Step 2: 更新 pip" -ForegroundColor Magenta -BackgroundColor Cyan
-    # curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    # python get-pip.py
+    #curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    #python get-pip.py
     $pkgs = pip list --outdated
     $pkgs = $pkgs[2..$pkgs.Count].ForEach{($_ -Split "\s+")[0]}
     if ("pip" -in $pkgs) {
@@ -174,7 +176,7 @@ function Update-Packages {
     # 更新 TeX Live
     $CurrentYear = Get-Date -Format yyyy
     Write-Host "Step 4: 更新 TeX Live $CurrentYear" -ForegroundColor Magenta -BackgroundColor Cyan
-    # tlmgr update --self --all --repository https://mirrors.bfsu.edu.cn/CTAN/systems/texlive/tlnet
+    #tlmgr update --self --all --repository https://mirrors.bfsu.edu.cn/CTAN/systems/texlive/tlnet
 
     # 更新 MiKTeX
     Write-Host "Step 5: 更新 MiKTeX" -ForegroundColor Magenta -BackgroundColor Cyan
@@ -187,12 +189,14 @@ function Update-Packages {
 
     # 更新 Chocolotey
     Write-Host "Step 7: 更新 Chocolatey" -ForegroundColor Magenta -BackgroundColor Cyan
-    # choco outdated
+    #choco outdated
 
     # 更新 Scoop
     Write-Host "Step 8: 更新 Scoop 及其已安装包" -ForegroundColor Magenta -BackgroundColor Cyan
-    scoop update *
     scoop status
+    scoop update *
+    scoop cleanup *
+    scoop cache rm *
 
     # 更新 npm
     Write-Host "Step 9: 更新 npm" -ForegroundColor Magenta -BackgroundColor Cyan
@@ -209,17 +213,25 @@ Set-Alias getnic Get-AllNic
 function Get-IP { curl ip.sb }
 Set-Alias getip Get-IP
 
+# 获取 IPv4 地址
+function Get-IPv4 { curl ip.sb }
+Set-Alias getipv4 Get-IPv4
+
+# 获取 IPv6 地址
+function Get-IPv6 { curl ip.sb }
+Set-Alias getipv6 Get-IPv6
+
 # 获取 IPv4 路由地址
 function Get-IPv4Routes {
     Get-NetRoute -AddressFamily IPv4 | Where-Object -FilterScript {$_.NextHop -ne "0.0.0.0"}
 }
-Set-Alias getipv4 Get-IPv4Routes
+Set-Alias getipv4r Get-IPv4Routes
 
 # 获取 IPv6 路由地址
 function Get-IPv6Routes {
     Get-NetRoute -AddressFamily IPv6 | Where-Object -FilterScript {$_.NextHop -ne "::"}
 }
-Set-Alias getipv6 Get-IPv6Routes
+Set-Alias getipv6r Get-IPv6Routes
 
 # 获取天气
 function Get-Weather { curl "wttr.in?0&lang=zh-cn" }
