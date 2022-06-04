@@ -45,6 +45,7 @@ Enable-PoshTooltips
 
 # 导入模块
 Import-Module posh-git
+Import-Module posh-wakatime
 $env:POSH_GIT_ENABLED = $true
 Import-Module PSReadLine
 If (!(Test-Path Variable:PSise)) {
@@ -89,7 +90,7 @@ function OpenCurrentFolder {
     )
     Invoke-Item $Path
 }
-Set-Alias o OpenCurrentFolder
+Set-Alias e OpenCurrentFolder
 
 # 返回上级目录
 function GoBack { Set-Location .. }
@@ -192,8 +193,13 @@ function Update-Packages {
     Write-Host "Step 8: 更新 Scoop 及其已安装包" -ForegroundColor Magenta -BackgroundColor Cyan
     scoop update *
     scoop status
+
+    # 更新 npm
+    Write-Host "Step 9: 更新 npm" -ForegroundColor Magenta -BackgroundColor Cyan
+    npm install --location=global npm
+    npm install --location=global yarn
 }
-Set-Alias update Update-Packages
+Set-Alias update-all Update-Packages
 
 # 获取所有网络接口
 function Get-AllNic { Get-NetAdapter | Sort-Object -Property MacAddress }
