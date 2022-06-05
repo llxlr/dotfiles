@@ -29,7 +29,7 @@ $env:DISPLAY = "127.0.0.1:0"  # X11
 $Path = $Pwd.path           # 获取路径
 if ($path.split("\")[-1] -eq "Windows" -xor $path.split("\")[-1] -eq "System32") {
     # 默认路径为桌面
-    $Desktop = $env:USERPROFILE + "\Desktop\"
+    $Desktop = "$env:USERPROFILE\Desktop"
     # 切换到桌面
     Set-Location $Desktop
 }
@@ -41,7 +41,6 @@ if ($path.split("\")[-1] -eq "Windows" -xor $path.split("\")[-1] -eq "System32")
 # ohmyposh
 #$env:POSH_THEMES_PATH\star.omp.json
 oh-my-posh init pwsh --config ~/.omp.json | Invoke-Expression
-Enable-PoshTooltips
 
 # 导入模块
 Import-Module posh-git
@@ -78,9 +77,13 @@ Set-PSReadlineKeyHandler -Key "Ctrl+d" -Function MenuComplete
 # 设置 Ctrl+z 为撤销
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
+# ohmyposh
+Enable-PoshTooltips
+Enable-PoshLineError
+Enable-PoshTransientPrompt
+
 # 查找程序路径
-function WhereFile { where.exe $args }
-Set-Alias whereis WhereFile
+function WhereIs { where.exe $args }
 
 # 打开目录，默认当前路径
 function OpenCurrentFolder {
@@ -138,6 +141,10 @@ function Pipe { python.exe $(where.exe maze.py) $args }
 # JaxoDraw
 function JaxoDraw { java.exe -jar $(where.exe jaxodraw.jar) }
 
+# npm package list
+function Npm-Packages { npm list --location=global --depth 0 }
+Set-Alias np Npm-Packages
+
 # 更新系统组件
 function Update-Packages {
     # 更新 conda
@@ -159,7 +166,7 @@ function Update-Packages {
     foreach ($pkg in $EscapePackages) {
         $pkgs.Remove($pkg)
     }
-    $UserPackages = @(Get-ChildItem $env:APPDATA\Python\Python38\site-packages -Name -Attributes D -Exclude @(
+    $UserPackages = @(Get-ChildItem "$env:APPDATA\Python\Python38\site-packages" -Name -Attributes D -Exclude @(
         "__pycache__"
     )).ForEach{$_=$_ -Split "\-.*?\.dist-info"; if ($_.Count -eq 2){ $_[0] }}
     if (@($pkgs).Count -ne 0) {
@@ -185,7 +192,7 @@ function Update-Packages {
 
     # 更新 WinGet 源
     Write-Host "Step 6: 更新 WinGet 源" -ForegroundColor Magenta -BackgroundColor Cyan
-    winget source update
+    winget source update --rainbow
 
     # 更新 Chocolotey
     Write-Host "Step 7: 更新 Chocolatey" -ForegroundColor Magenta -BackgroundColor Cyan
@@ -205,20 +212,26 @@ function Update-Packages {
 }
 Set-Alias update-all Update-Packages
 
-# 获取所有网络接口
-function Get-AllNic { Get-NetAdapter | Sort-Object -Property MacAddress }
-Set-Alias getnic Get-AllNic
+# 备份配置
+function Backup-Configs {
+    # 备份 scoop 配置
+    Write-Host "Step 1: 备份 Scoop 配置" -ForegroundColor Magenta -BackgroundColor Cyan
+    scoop list | Select-Object -Property Name,Source | ConvertTo-Json | Add-Content -Path "$env:SCOOP\apps.json"
+    scoop bucket list | Select-Object -Property Name,Source | ConvertTo-Json | Add-Content -Path "$env:SCOOP\buckets.json"
+    Copy-Item ~/.config/scoop/config.json "$env:SCOOP\config.json"
+}
+Set-Alias backup-all Backup-Configs
 
 # 获取 IP 地址
 function Get-IP { curl ip.sb }
 Set-Alias getip Get-IP
 
 # 获取 IPv4 地址
-function Get-IPv4 { curl ip.sb }
+function Get-IPv4 { curl -4 ip.sb }
 Set-Alias getipv4 Get-IPv4
 
 # 获取 IPv6 地址
-function Get-IPv6 { curl ip.sb }
+function Get-IPv6 { curl -6 ip.sb }
 Set-Alias getipv6 Get-IPv6
 
 # 获取 IPv4 路由地址
@@ -232,6 +245,10 @@ function Get-IPv6Routes {
     Get-NetRoute -AddressFamily IPv6 | Where-Object -FilterScript {$_.NextHop -ne "::"}
 }
 Set-Alias getipv6r Get-IPv6Routes
+
+# 获取所有网络接口
+function Get-AllNic { Get-NetAdapter | Sort-Object -Property MacAddress }
+Set-Alias getnic Get-AllNic
 
 # 获取天气
 function Get-Weather { curl "wttr.in?0&lang=zh-cn" }
