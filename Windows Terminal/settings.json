@@ -86,7 +86,9 @@
             },
             {
                 "backgroundImage": "https://i.xhlr.top/bg.png",
+                "backgroundImageAlignment": "right",
                 "backgroundImageOpacity": 0.10000000000000001,
+                "backgroundImageStretchMode": "uniform",
                 "colorScheme": "TokyoNightStorm",
                 "commandline": "pwsh.exe -NoLogo -NoExit",
                 "experimental.retroTerminalEffect": false,
@@ -214,7 +216,7 @@
                 },
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
-                "icon": "https://assets.ubuntu.com/v1/49a1a858-favicon-32x32.png",
+                "icon": "https://ubuntu.com/favicon.ico",
                 "name": "Ubuntu",
                 "opacity": 65,
                 "padding": "4",
@@ -280,6 +282,50 @@
                 "name": "Developer PowerShell for VS 2019",
                 "opacity": 65,
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "antialiasingMode": "cleartype",
+                "backgroundImage": "https://i.xhlr.top/bg.png",
+                "backgroundImageAlignment": "right",
+                "backgroundImageOpacity": 0.10000000000000001,
+                "backgroundImageStretchMode": "uniform",
+                "colorScheme": "One Half Dark",
+                "commandline": "ssh aliyun",
+                "font": 
+                {
+                    "face": "FuraCode Nerd Font Mono",
+                    "size": 10
+                },
+                "guid": "{f0963317-4e34-4560-b41f-756d6033b95d}",
+                "hidden": false,
+                "icon": "https://cn.aliyun.com/favicon.ico",
+                "name": "Aliyun",
+                "opacity": 65,
+                "startingDirectory": "~",
+                "suppressApplicationTitle": true,
+                "useAcrylic": false
+            },
+            {
+                "antialiasingMode": "cleartype",
+                "backgroundImage": "https://i.xhlr.top/bg.png",
+                "backgroundImageAlignment": "right",
+                "backgroundImageOpacity": 0.10000000000000001,
+                "backgroundImageStretchMode": "uniform",
+                "colorScheme": "One Half Dark",
+                "commandline": "ssh tencent",
+                "font": 
+                {
+                    "face": "FuraCode Nerd Font Mono",
+                    "size": 10
+                },
+                "guid": "{085cfc76-8d53-43d8-b136-02654bda0564}",
+                "hidden": false,
+                "icon": "https://cloud.tencent.com/favicon.ico",
+                "name": "Tencent Cloud",
+                "opacity": 65,
+                "startingDirectory": "~",
+                "suppressApplicationTitle": true,
+                "useAcrylic": false
             }
         ]
     },
