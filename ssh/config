@@ -6,22 +6,31 @@
 # ssh-keygen -t rsa -C "<email>"
 # ssh-keygen -t rsa -m PEM -C "<email>"
 # ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
+# cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 # scp ~/.ssh/id_rsa.pub root@host:/root/.ssh/authorized_keys
-
 # ssh -T git@github.com
+# ssh -T git@gitee.com
+
 Host github
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_rsa
 
-# ssh -T git@gitee.com
 Host gitee
     HostName gitee.com
     User git
     IdentityFile ~/.ssh/id_rsa
 
-Host txc
-    HostName white-album.top
+Host aliyun
+    HostName a.white-album.top
+    Port 22
+    User root
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    IdentityFile ~/.ssh/others/server/id_rsa.pem
+
+Host tencent
+    HostName t.white-album.top
     Port 22
     User root
     ServerAliveInterval 60
