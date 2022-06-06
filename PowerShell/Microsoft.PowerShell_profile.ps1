@@ -44,8 +44,8 @@ oh-my-posh init pwsh --config ~/.omp.json | Invoke-Expression
 
 # 导入模块
 Import-Module posh-git
-Import-Module posh-wakatime
 $env:POSH_GIT_ENABLED = $true
+Import-Module posh-wakatime
 Import-Module PSReadLine
 If (!(Test-Path Variable:PSise)) {
     Import-Module Get-ChildItemColor
@@ -55,8 +55,9 @@ If (!(Test-Path Variable:PSise)) {
     Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
 }
 Import-Module ZLocation
-Import-Module npm-completion
 Import-Module PSFzf
+Import-Module npm-completion
+Import-Module yarn-completion
 if (Get-Module -ListAvailable -Name Get-Quote) {
     Import-Module Get-Quote
     Set-Alias fortune Get-Quote
@@ -66,14 +67,14 @@ if (Get-Module -ListAvailable -Name Get-Quote) {
 Set-PSReadLineOption -PredictionSource History -ShowToolTips
 # 每次回溯输入历史，光标定位于输入内容末尾
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-# 设置 Tab 为菜单补全和 Intellisense
-Set-PSReadLineKeyHandler -Key "Tab" -Function MenuComplete
+# 不设置响铃
+Set-PSReadLineOption -BellStyle:None
+# 设置 Tab 为菜单补全和 IntelliSense
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 # 设置向上键为后向搜索历史记录
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 # 设置向下键为前向搜索历史纪录
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-# 设置 Ctrl+d 为菜单补全和 IntelliSense
-Set-PSReadlineKeyHandler -Key "Ctrl+d" -Function MenuComplete
 # 设置 Ctrl+z 为撤销
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
