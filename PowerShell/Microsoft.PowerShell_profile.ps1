@@ -217,9 +217,9 @@ Set-Alias update-all Update-Packages
 function Backup-Configs {
     # 备份 scoop 配置
     Write-Host "Step 1: 备份 Scoop 配置" -ForegroundColor Magenta -BackgroundColor Cyan
-    scoop list | Select-Object -Property Name,Source | ConvertTo-Json | Add-Content -Path "$env:SCOOP\apps.json"
-    scoop bucket list | Select-Object -Property Name,Source | ConvertTo-Json | Add-Content -Path "$env:SCOOP\buckets.json"
-    Copy-Item ~/.config/scoop/config.json "$env:SCOOP\config.json"
+    scoop list | Select-Object -Property Name,Source | ConvertTo-Json | Add-Content -Path "$env:BACKUP\scoop\apps.json"
+    scoop bucket list | Select-Object -Property Name,Source | ConvertTo-Json | Add-Content -Path "$env:BACKUP\scoop\buckets.json"
+    Copy-Item ~/.config/scoop/config.json "$env:BACKUP\scoop\config.json"
 }
 Set-Alias backup-all Backup-Configs
 

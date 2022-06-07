@@ -4,6 +4,10 @@
     "actions": 
     [
         {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
             "command": 
             {
                 "action": "copy",
@@ -14,10 +18,6 @@
         {
             "command": "find",
             "keys": "ctrl+shift+f"
-        },
-        {
-            "command": "paste",
-            "keys": "ctrl+v"
         },
         {
             "command": 
@@ -82,6 +82,7 @@
                 "name": "Windows PowerShell",
                 "opacity": 65,
                 "suppressApplicationTitle": true,
+                "tabColor": "#70F3FF",
                 "useAcrylic": true
             },
             {
@@ -149,7 +150,7 @@
                 "padding": "8",
                 "startingDirectory": "%USERPROFILE%",
                 "suppressApplicationTitle": true,
-                "tabTitle": "Cmder",
+                "tabColor": "#00E09E",
                 "useAcrylic": false
             },
             {
@@ -176,12 +177,14 @@
                 "backgroundImage": "https://i.xhlr.top/bg.png",
                 "backgroundImageOpacity": 0.10000000000000001,
                 "colorScheme": "One Half Dark",
-                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe --login -i",
+                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe -i -l",
                 "guid": "{9afb7c1b-2d30-4830-a4d9-29734b213fb6}",
                 "hidden": false,
                 "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
                 "name": "Git Bash",
-                "opacity": 65
+                "opacity": 65,
+                "suppressApplicationTitle": true,
+                "useAcrylic": false
             },
             {
                 "antialiasingMode": "cleartype",
@@ -190,7 +193,7 @@
                 "backgroundImageOpacity": 0.10000000000000001,
                 "backgroundImageStretchMode": "uniform",
                 "colorScheme": "One Half Dark",
-                "commandline": "D:\\env\\msys64\\msys2_shell.cmd -defterm -here -no-start -msys",
+                "commandline": "D:\\envs\\msys64\\msys2_shell.cmd -defterm -here -no-start -msys",
                 "font": 
                 {
                     "face": "FuraCode Nerd Font Mono",
@@ -201,7 +204,7 @@
                 "icon": "https://www.msys2.org/favicon.ico",
                 "name": "MSYS2",
                 "opacity": 65,
-                "tabTitle": "MSYS2",
+                "suppressApplicationTitle": true,
                 "useAcrylic": false
             },
             {
@@ -221,7 +224,8 @@
                 "opacity": 65,
                 "padding": "4",
                 "source": "Windows.Terminal.Wsl",
-                "tabTitle": null,
+                "suppressApplicationTitle": true,
+                "tabColor": "#F0C239",
                 "useAcrylic": false
             },
             {
@@ -231,7 +235,7 @@
                 "backgroundImageOpacity": 0.10000000000000001,
                 "backgroundImageStretchMode": "uniform",
                 "colorScheme": "One Half Dark",
-                "commandline": "ssh -X pi",
+                "commandline": "ssh.exe -X pi",
                 "font": 
                 {
                     "face": "FuraCode Nerd Font Mono",
@@ -243,6 +247,7 @@
                 "opacity": 65,
                 "startingDirectory": "~",
                 "suppressApplicationTitle": true,
+                "tabColor": "#C93756",
                 "useAcrylic": false
             },
             {
@@ -253,7 +258,9 @@
                 "hidden": false,
                 "icon": "\uf260",
                 "name": "PuTTY COM Session",
-                "opacity": 65
+                "opacity": 65,
+                "suppressApplicationTitle": true,
+                "useAcrylic": false
             },
             {
                 "backgroundImage": "https://i.xhlr.top/bg.png",
@@ -263,7 +270,9 @@
                 "hidden": false,
                 "icon": "\uf260",
                 "name": "PuTTY COM",
-                "opacity": 65
+                "opacity": 65,
+                "suppressApplicationTitle": true,
+                "useAcrylic": false
             },
             {
                 "backgroundImage": "https://i.xhlr.top/bg.png",
@@ -290,7 +299,7 @@
                 "backgroundImageOpacity": 0.10000000000000001,
                 "backgroundImageStretchMode": "uniform",
                 "colorScheme": "One Half Dark",
-                "commandline": "ssh aliyun",
+                "commandline": "ssh.exe aliyun",
                 "font": 
                 {
                     "face": "FuraCode Nerd Font Mono",
@@ -312,7 +321,7 @@
                 "backgroundImageOpacity": 0.10000000000000001,
                 "backgroundImageStretchMode": "uniform",
                 "colorScheme": "One Half Dark",
-                "commandline": "ssh tencent",
+                "commandline": "ssh.exe tencent",
                 "font": 
                 {
                     "face": "FuraCode Nerd Font Mono",
@@ -399,29 +408,6 @@
             "selectionBackground": "#44475A",
             "white": "#BBBBBB",
             "yellow": "#F1FA8C"
-        },
-        {
-            "background": "#283033",
-            "black": "#000000",
-            "blue": "#6666E9",
-            "brightBlack": "#666666",
-            "brightBlue": "#0000FF",
-            "brightCyan": "#00E5E5",
-            "brightGreen": "#00D900",
-            "brightPurple": "#E500E5",
-            "brightRed": "#E50000",
-            "brightWhite": "#E5E5E5",
-            "brightYellow": "#E5E500",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#00A6B2",
-            "foreground": "#00FF00",
-            "green": "#00A600",
-            "name": "Homebrew",
-            "purple": "#B200B2",
-            "red": "#FC5275",
-            "selectionBackground": "#FFFFFF",
-            "white": "#BFBFBF",
-            "yellow": "#999900"
         },
         {
             "background": "#272822",
