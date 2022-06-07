@@ -6,6 +6,7 @@
       "alignment": "left",
       "segments": [
         {
+          "background": "transparent",
           "foreground": "#1865f5",
           "properties": {
             "alpine": "\uf300",
@@ -31,23 +32,26 @@
           "type": "os"
         },
         {
-          "foreground": "#E06C75",
+          "background": "transparent",
+          "foreground": "#e06c75",
           "style": "plain",
           "template": "admin",
           "type": "root"
         },
         {
+          "background": "transparent",
           "foreground": "#100e23",
           "properties": {
             "display_user": true,
             "display_host": false
           },
           "style": "diamond",
-          "template": "{{ if .SSHSession }}\uF817 {{ end }}{{ if .Root }}<#801dae>@</><#1865f5>{{ .HostName }}</>{{ else }}<#45F1C2>{{ .UserName }}</><#801dae>@</><#1865f5>{{ .HostName }}</>{{ end }} ",
+          "template": "{{ if .SSHSession }}\uF817 {{ end }}{{ if .Root }}<#801dae>@</><#1865f5>{{ .HostName }}</>{{ else }}<#45f1c2>{{ .UserName }}</><#801dae>@</><#1865f5>{{ .HostName }}</>{{ end }} ",
           "type": "session"
         },
         {
-          "foreground": "#55B9C4",
+          "background": "transparent",
+          "foreground": "#55B9c4",
           "properties": {
             "folder_separator_icon": "/",
             "style": "full",
@@ -68,30 +72,35 @@
           "type": "path"
         },
         {
+          "background": "transparent",
           "foreground": "blue",
           "style": "plain",
           "template": "{{ if .Error }}{{ .Error }}{{ else }}{{ if .Version }}\uf487 {{ if .Name }}{{ .Name }}{{ end }} {{.Version}}{{ end }}{{ end }} ",
           "type": "project"
         },
         {
+          "background": "transparent",
           "foreground": "#000000",
           "style": "plain",
           "template": " \uFD03 {{ .EnvironmentName }} ",
           "type": "az"
         },
         {
+          "background": "transparent",
           "foreground": "#ffffff",
           "style": "plain",
           "template": " \uE7AD {{ .Profile }}{{if .Region }}@{{ .Region }}{{ end }} ",
           "type": "aws"
         },
         {
+          "background": "transparent",
           "style": "plain",
           "template": " \uE77F {{ .Full }} ",
           "type": "dotnet"
         },
         {
-          "foreground": "#C678DD",
+          "background": "transparent",
+          "foreground": "#c678dd",
           "properties": {
             "fetch_status": true
           },
@@ -100,7 +109,8 @@
           "type": "git"
         },
         {
-          "foreground": "#98C379",
+          "background": "transparent",
+          "foreground": "#98c379",
           "properties": {
             "fetch_version": true
           },
@@ -109,7 +119,8 @@
           "type": "node"
         },
         {
-          "foreground": "#FFE873",
+          "background": "transparent",
+          "foreground": "#ffe873",
           "properties": {
             "fetch_version": true,
             "display_virtual_env": true,
@@ -121,12 +132,14 @@
           "type": "python"
         },
         {
-          "foreground": "#7FD5EA",
+          "background": "transparent",
+          "foreground": "#7fd5ea",
           "style": "plain",
           "template": "<#ffffff>via</> \uFCD1 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
           "type": "go"
         },
         {
+          "background": "transparent",
           "foreground": "blue",
           "style": "plain",
           "template": "<#ffffff>via</> \ufcd2 {{ .Full }} ",
@@ -139,6 +152,7 @@
       "alignment": "right",
       "segments": [
         {
+          "background": "transparent",
           "foreground": "white",
           "properties": {
             "always_enabled": true
@@ -148,6 +162,7 @@
           "type": "executiontime"
         },
         {
+          "background": "transparent",
           "foreground": "#23d18b",
           "properties": {
             "always_enabled": true
@@ -164,7 +179,8 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#63F08C",
+          "background": "transparent",
+          "foreground": "#63f08c",
           "style": "plain",
           "template": "{{ if .Root }}#{{ else }}${{ end }}",
           "type": "text"
@@ -174,8 +190,8 @@
   ],
   "transient_prompt": {
     "background": "transparent",
-    "foreground": "blue",
-    "template": "{{ .Shell }}> "
+    "foreground": "#63f08c",
+    "template": "$ "
   },
   "valid_line": {
     "background": "transparent",
@@ -189,18 +205,18 @@
   },
   "tooltips": [
     {
-      "type": "git",
-      "tips": ["git", "g"],
-      "style": "diamond",
-      "foreground": "#193549",
       "background": "#fffb38",
+      "foreground": "#193549",
       "leading_diamond": "",
       "trailing_diamond": "",
       "template": "{{ .HEAD }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}",
       "properties": {
         "fetch_status": true,
         "fetch_upstream_icon": true
-      }
+      },
+      "style": "diamond",
+      "tips": ["git", "g"],
+      "type": "git"
     }
   ],
   "console_title_template": "{{ .Folder }}{{if .Root}} :: Admin{{end}} :: {{.Shell}}",
