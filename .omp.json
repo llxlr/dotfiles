@@ -182,7 +182,7 @@
           "background": "transparent",
           "foreground": "#63f08c",
           "style": "plain",
-          "template": "{{ if .Root }}#{{ else }}${{ end }}",
+          "template": "{{ if .Root }}<#e06c75>#</>{{ else }}${{ end }}",
           "type": "text"
         }
       ]
