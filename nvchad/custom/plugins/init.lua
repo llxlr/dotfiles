@@ -8,7 +8,7 @@ return {
         tasks = {
           c = "make", -- 可以是字符串，会发送到浮动终端执行
           python = "python <file>", -- 尖括号标记预定义变量。见下方变量。
-          go = "go run <file>",
+          golang = "go run <file>",
           lua = function() -- 也可以执行一个函数
             vim.cmd("luafile %") -- 使用 VIM API
           end,
@@ -34,40 +34,59 @@ return {
   ["lervag/vimtex"] = {
     opt = true,
     config = function()
+      -- 语法风格设为 LaTeX
+      vim.g.tex_flavor = 'latex'
+      -- 不自动弹出编译错误窗口
+      vim.g.vimtex_quickfix_mode = 0
+      -- 设置 PDF 阅读器
       -- Windows
-      vim.g.vimtex_view_general_viewer = 'SumatraPDF' -- SumatraPDF/Okular/Zathura
-      vim.g.imtex_view_method = 'SumatraPDF'
-      vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
-      vim.g.vimtex_view_general_options_latexmk = '--unique'
+      vim.g.imtex_view_method = '"D:/Program Files/SumatraPDF/SumatraPDF.exe"'
+      vim.g.vimtex_view_general_viewer = '"D:/Program Files/SumatraPDF/SumatraPDF.exe"'
+      vim.g.vimtex_view_general_options_latexmk = '-reuse-instance'
+      vim.g.vimtex_view_general_options = ' -reuse-instance -forward-search @tex @line @pdf'
+        .. ' -inverse-search "' . 'cmd /c start /min \"\" ' .. exepath(v:progpath)
+        .. ' -v --not-a-term -T dumb -c  \"VimtexInverseSearch %l ''%f''\""'
 
       -- Linux
-      --vim.g.vimtex_view_general_viewer = 'zathura'
       --vim.g.vimtex_view_method = 'zathura'
+      --vim.g.vimtex_view_general_viewer = 'zathura'
+
+      --vim.g.vimtex_view_method = 'okular'
+      --vim.g.vimtex_view_general_viewer = 'okular'
+      --vim.g.vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
       -- OS X
-      --vim.g.vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+      --vim.g.vimtex_view_method = 'Skim'
+      --vim.g.vimtex_view_general_viewer = 'Skim'
       --vim.g.vimtex_view_general_options = '-r @line @pdf @tex'
 
-      vim.g.vimtex_compiler_latexmk_engines = {
-          _ = '-xelatex'
-      }
+      -- 
       vim.g.tex_comment_nospell = 1
+      -- 指定 VimTeX 编译程序
       vim.g.vimtex_compiler_progname = 'nvr'
+      -- VimTeX 目录 TOC 配置
+      vim.g.vimtex_toc_config = {
+        'name' : 'TOC',
+        'layers' : ['content', 'todo', 'include'],
+        'split_width' : 25,
+        'todo_sorted' : 0,
+        'show_help' : 1,
+        'show_numbers' : 1,
+      }
     end,
     ft = 'tex',
   },
 
-  -- ["SirVer/ultisnips"] = {
-  --   opt = true,
-  --   config = function()
-  --     vim.g.UltiSnipsExpandTrigger="<tab>"
-  --     vim.g.UltiSnipsJumpForwardTrigger="<c-b>"
-  --     vim.g.UltiSnipsJumpBackwardTrigger="<c-z>"
+  ["SirVer/ultisnips"] = {
+    opt = true,
+    config = function()
+      vim.g.UltiSnipsExpandTrigger = "<tab>"
+      vim.g.UltiSnipsJumpForwardTrigger = "<c-b>"
+      vim.g.UltiSnipsJumpBackwardTrigger = "<c-z>"
+      vim.g.UltiSnipsEditSplit = "vertical"
+    end,
+  },
 
-  --     vim.g.UltiSnipsEditSplit="vertical"
-  --   end,
-  -- },
-
-  -- ["honza/vim-snippets"] = {},
+  ["honza/vim-snippets"] = {},
 
 }
