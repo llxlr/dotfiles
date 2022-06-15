@@ -8,6 +8,9 @@ M.options = {
     update_url = "git@github.com:NvChad/NvChad.git",
     update_branch = "main",
   },
+  user = function()
+    require("custom.options")
+  end,
 }
 
 M.ui = {
@@ -24,13 +27,14 @@ M.plugins = {
 
   options = {
     lspconfig = {
-       setup_lspconf = "custom.plugins.lspconfig", -- lspconfig 文件路径
+      setup_lspconf = "custom.plugins.lspconfig", -- lspconfig 文件路径
     },
     statusline = {
-       separator_style = "round", -- default/round/slant/block/arrow
+      separator_style = "round", -- default/round/slant/block/arrow
+      config = "%!v:lua.require'ui.statusline'.run()",
     },
     telescope = {
-       extensions = { "themes", "terms" }
+      extensions = { "themes", "terms" },
     }
   },
 
