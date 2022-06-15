@@ -42,7 +42,6 @@ return {
       -- Windows
       vim.g.imtex_view_method = '"D:/Program Files/SumatraPDF/SumatraPDF.exe"'
       vim.g.vimtex_view_general_viewer = '"D:/Program Files/SumatraPDF/SumatraPDF.exe"'
-      vim.g.vimtex_view_general_options_latexmk = '-reuse-instance'
       vim.g.vimtex_view_general_options = ' -reuse-instance -forward-search @tex @line @pdf'
         .. ' -inverse-search "' . 'cmd /c start /min \"\" ' .. exepath(v:progpath)
         .. ' -v --not-a-term -T dumb -c  \"VimtexInverseSearch %l ''%f''\""'
