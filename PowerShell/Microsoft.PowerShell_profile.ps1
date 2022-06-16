@@ -83,6 +83,9 @@ Enable-PoshTooltips
 Enable-PoshLineError
 Enable-PoshTransientPrompt
 
+# psfzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
 # 查找程序路径
 function WhereIs { where.exe $args }
 
