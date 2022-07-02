@@ -134,7 +134,7 @@ function Figlet {
 }
 
 # music-player
-Set-Alias MPR music-player.exe
+Set-Alias mpr music-player.exe
 
 # wpa2gen
 function Wpa2Gen { python.exe $(where.exe wpa2gen.py) }
@@ -166,7 +166,8 @@ function Update-Packages {
         python -m pip install --upgrade pip
         $pkgs.Remove("pip")
     }
-    $EscapePackages = "setuptools", "h11", "pywin32"
+    $Path = Split-Path $profile
+    $EscapePackages = Get-Content -Path "$Path\\pip.txt"
     foreach ($pkg in $EscapePackages) {
         $pkgs.Remove($pkg)
     }
@@ -213,6 +214,13 @@ function Update-Packages {
     Write-Host "Step 9: 更新 npm" -ForegroundColor Magenta -BackgroundColor Cyan
     npm install --location=global npm
     npm install --location=global yarn
+    if (!(where.exe ncu)) {
+        npm install --location=global npm-check-updates
+    }
+    $cmd = $(ncu -g -u)[-2]
+    if ($cmd) {
+        Invoke-Expression $cmd.Replace("-g install", "install --location=global")
+    }
 }
 Set-Alias update-all Update-Packages
 
