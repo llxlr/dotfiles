@@ -4,16 +4,16 @@
     "actions": 
     [
         {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
             "command": 
             {
                 "action": "copy",
                 "singleLine": false
             },
             "keys": "ctrl+c"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+v"
         },
         {
             "command": "find",
@@ -72,6 +72,7 @@
                 "backgroundImageStretchMode": "uniform",
                 "colorScheme": "Campbell Powershell",
                 "commandline": "powershell.exe -NoLogo -NoExit",
+                "cursorShape": "bar",
                 "font": 
                 {
                     "face": "FuraCode Nerd Font Mono",
@@ -92,6 +93,7 @@
                 "backgroundImageStretchMode": "uniform",
                 "colorScheme": "TokyoNightStorm",
                 "commandline": "pwsh.exe -NoLogo -NoExit",
+                "cursorShape": "bar",
                 "experimental.retroTerminalEffect": false,
                 "font": 
                 {
@@ -183,6 +185,7 @@
                 "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
                 "name": "Git Bash",
                 "opacity": 65,
+                "startingDirectory": "%USERPROFILE%",
                 "suppressApplicationTitle": true,
                 "useAcrylic": false
             },
@@ -204,6 +207,29 @@
                 "icon": "https://www.msys2.org/favicon.ico",
                 "name": "MSYS2",
                 "opacity": 65,
+                "startingDirectory": "%USERPROFILE%",
+                "suppressApplicationTitle": true,
+                "useAcrylic": false
+            },
+            {
+                "antialiasingMode": "cleartype",
+                "backgroundImage": "https://i.xhlr.top/bg.png",
+                "backgroundImageAlignment": "right",
+                "backgroundImageOpacity": 0.10000000000000001,
+                "backgroundImageStretchMode": "uniform",
+                "colorScheme": "One Half Dark",
+                "commandline": "nu.exe",
+                "font": 
+                {
+                    "face": "FuraCode Nerd Font Mono",
+                    "size": 10
+                },
+                "guid": "{2b372ca1-1ee2-403d-a839-6d63077ad871}",
+                "hidden": false,
+                "icon": "https://www.nushell.sh/icon.png",
+                "name": "Nu Shell",
+                "opacity": 65,
+                "startingDirectory": "%USERPROFILE%",
                 "suppressApplicationTitle": true,
                 "useAcrylic": false
             },
@@ -259,6 +285,7 @@
                 "icon": "\uf260",
                 "name": "PuTTY COM Session",
                 "opacity": 65,
+                "startingDirectory": "%USERPROFILE%",
                 "suppressApplicationTitle": true,
                 "useAcrylic": false
             },
@@ -271,6 +298,7 @@
                 "icon": "\uf260",
                 "name": "PuTTY COM",
                 "opacity": 65,
+                "startingDirectory": "%USERPROFILE%",
                 "suppressApplicationTitle": true,
                 "useAcrylic": false
             },
@@ -610,6 +638,29 @@
             "foreground": "#FFFFFF",
             "green": "#26A269",
             "name": "Ubuntu-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        },
+        {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-Preview-ColorScheme",
             "purple": "#881798",
             "red": "#C21A23",
             "selectionBackground": "#FFFFFF",
