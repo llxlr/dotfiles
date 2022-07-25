@@ -12,6 +12,7 @@ custom_channels:
   bioconda: https://mirrors.bfsu.edu.cn/anaconda/cloud
   menpo: https://mirrors.bfsu.edu.cn/anaconda/cloud
   pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.bfsu.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.bfsu.edu.cn/anaconda/cloud
 envs_dirs:
   - D:/envs/conda/envs
@@ -19,5 +20,6 @@ envs_dirs:
 pkgs_dirs:
   - C:/Users/i/AppData/Local/Temp/conda/pkgs
   - /tmp/conda/pkgs
+  - /mnt/c/Users/i/AppData/Local/Temp/conda/pkgs
 report_errors: false
 auto_activate_base: false
