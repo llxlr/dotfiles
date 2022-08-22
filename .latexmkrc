@@ -23,7 +23,7 @@ $recorder = 1;
 # Linux 使用 Zathura/Okular
 # MacOS 使用 Skim
 if($^O eq "MSWin32" or $^O eq "msys"){
-    $pdf_previewer = 'start "D:\\Program Files\\SumatraPDF\\SumatraPDF.exe" %O %S';
+    $pdf_previewer = 'start "C:\\Program Files\\SumatraPDF\\SumatraPDF.exe" %O %S';
 }elsif($^O eq "linux"){
     $pdf_previewer = "start zathura %O %S";
     #$pdf_previewer = "start okular --unique %O %S";

@@ -15,11 +15,9 @@ custom_channels:
   pytorch-lts: https://mirrors.bfsu.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.bfsu.edu.cn/anaconda/cloud
 envs_dirs:
-  - D:/envs/conda/envs
   - ~/.conda/envs
 pkgs_dirs:
   - C:/Users/i/AppData/Local/Temp/conda/pkgs
   - /tmp/conda/pkgs
-  - /mnt/c/Users/i/AppData/Local/Temp/conda/pkgs
 report_errors: false
 auto_activate_base: false
