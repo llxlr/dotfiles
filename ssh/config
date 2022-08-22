@@ -21,6 +21,12 @@ Host gitee
     User git
     IdentityFile ~/.ssh/id_rsa
 
+Host wsl2
+    HostName localhost
+    Port 22
+    User i
+    IdentityFile ~/.ssh/id_rsa
+
 Host aliyun
     HostName a.white-album.top
     Port 22
