@@ -38,8 +38,8 @@
     "experimental.rendering.forceFullRepaint": true,
     "experimental.rendering.software": true,
     "focusFollowMouse": true,
-    "initialCols": 120,
-    "initialRows": 30,
+    "initialCols": 100,
+    "initialRows": 25,
     "profiles": 
     {
         "defaults": 
@@ -56,11 +56,11 @@
             "font": 
             {
                 "face": "FuraCode Nerd Font Mono",
-                "size": 10
+                "size": 12
             },
             "historySize": 9001,
             "opacity": 65,
-            "padding": "4",
+            "padding": "8",
             "scrollbarState": "visible",
             "startingDirectory": "%USERPROFILE%",
             "suppressApplicationTitle": true,
@@ -101,7 +101,7 @@
                 },
                 "guid": "{5c5fdab6-843d-4ce4-8f0e-571421d71528}",
                 "hidden": true,
-                "icon": "https://cmder.net/favicon.ico",
+                "icon": "https://cmder.app/favicon.ico",
                 "name": "Cmder",
                 "padding": "8",
                 "tabColor": "#00E09E"
@@ -132,7 +132,7 @@
                 "font": 
                 {
                     "face": "UbuntuMono Nerd Font Mono",
-                    "size": 12
+                    "size": 14
                 },
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
@@ -142,28 +142,20 @@
                 "tabColor": "#F0C239"
             },
             {
+                "commandline": "wsl.exe -d Arch",
+                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+                "hidden": false,
+                "icon": "https://archlinux.org/favicon.ico",
+                "name": "Arch",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
                 "commandline": "ssh.exe -X pi",
                 "guid": "{1b5eac30-c4ec-4b26-b2fa-fc0f77aa1598}",
                 "icon": "https://www.raspberrypi.org/favicon.ico",
                 "name": "Raspberry Pi",
                 "startingDirectory": "~",
                 "tabColor": "#C93756"
-            },
-            {
-                "commandline": "plink.exe -load \"Default Settings\"",
-                "guid": "{85530f92-e476-4121-a108-cfc8a67cddf0}",
-                "hidden": false,
-                "icon": "\uf260",
-                "name": "PuTTY COM Session"
-            },
-            {
-                "backgroundImage": "https://i.xhlr.top/bg.png",
-                "backgroundImageOpacity": 0.10000000000000001,
-                "commandline": "plink.exe -load \"COM\"",
-                "guid": "{3f385183-dc55-49bc-a90a-f54c4aaba332}",
-                "hidden": false,
-                "icon": "\uf260",
-                "name": "PuTTY COM"
             },
             {
                 "commandline": "ssh.exe aliyun",
@@ -182,12 +174,18 @@
                 "startingDirectory": "~"
             },
             {
-                "commandline": "wsl.exe -d Arch",
-                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+                "commandline": "plink.exe -load \"Default Settings\"",
+                "guid": "{85530f92-e476-4121-a108-cfc8a67cddf0}",
                 "hidden": false,
-                "icon": "https://archlinux.org/favicon.ico",
-                "name": "Arch",
-                "source": "Windows.Terminal.Wsl"
+                "icon": "\uf260",
+                "name": "PuTTY COM Session"
+            },
+            {
+                "commandline": "plink.exe -load \"COM\"",
+                "guid": "{3f385183-dc55-49bc-a90a-f54c4aaba332}",
+                "hidden": false,
+                "icon": "\uf260",
+                "name": "PuTTY COM"
             }
         ]
     },
@@ -517,7 +515,7 @@
         }
     ],
     "showTabsInTitlebar": true,
-    "tabWidthMode": "equal",
+    "tabWidthMode": "compact",
     "trimBlockSelection": true,
     "useAcrylicInTabRow": true,
     "windowingBehavior": "useAnyExisting"
