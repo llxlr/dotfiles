@@ -52,10 +52,11 @@
             "bellStyle": "audible",
             "colorScheme": "One Half Dark",
             "cursorShape": "bar",
+            "elevate": false,
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "FuraCode Nerd Font Mono",
+                "face": "SauceCodePro Nerd Font Mono",
                 "size": 12
             },
             "historySize": 9001,
@@ -139,6 +140,7 @@
                 "icon": "https://ubuntu.com/favicon.ico",
                 "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl",
+                "startingDirectory": "~",
                 "tabColor": "#F0C239"
             },
             {
@@ -147,7 +149,8 @@
                 "hidden": false,
                 "icon": "https://archlinux.org/favicon.ico",
                 "name": "Arch",
-                "source": "Windows.Terminal.Wsl"
+                "source": "Windows.Terminal.Wsl",
+                "startingDirectory": "~"
             },
             {
                 "commandline": "ssh.exe -X pi",
@@ -468,29 +471,6 @@
             "yellow": "#A2734C"
         },
         {
-            "background": "#300A24",
-            "black": "#171421",
-            "blue": "#0037DA",
-            "brightBlack": "#767676",
-            "brightBlue": "#08458F",
-            "brightCyan": "#2C9FB3",
-            "brightGreen": "#26A269",
-            "brightPurple": "#A347BA",
-            "brightRed": "#C01C28",
-            "brightWhite": "#F2F2F2",
-            "brightYellow": "#A2734C",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#3A96DD",
-            "foreground": "#FFFFFF",
-            "green": "#26A269",
-            "name": "Ubuntu-Preview-ColorScheme",
-            "purple": "#881798",
-            "red": "#C21A23",
-            "selectionBackground": "#FFFFFF",
-            "white": "#CCCCCC",
-            "yellow": "#A2734C"
-        },
-        {
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -515,7 +495,7 @@
         }
     ],
     "showTabsInTitlebar": true,
-    "tabWidthMode": "compact",
+    "tabWidthMode": "equal",
     "trimBlockSelection": true,
     "useAcrylicInTabRow": true,
     "windowingBehavior": "useAnyExisting"
