@@ -11,6 +11,7 @@ custom_channels:
   msys2: https://mirrors.bfsu.edu.cn/anaconda/cloud
   bioconda: https://mirrors.bfsu.edu.cn/anaconda/cloud
   menpo: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  Paddle: https://mirrors.bfsu.edu.cn/anaconda/cloud
   pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
   pytorch-lts: https://mirrors.bfsu.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.bfsu.edu.cn/anaconda/cloud
