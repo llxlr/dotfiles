@@ -56,10 +56,10 @@ $ShowPkgs = @("winget", "scoop", "choco")
 # 'bar' is for bar only.
 # 'textbar' is for text + bar.
 # 'bartext' is for bar + text.
-$cpustyle = 'bar'
-$memorystyle = 'bar'
-$diskstyle = 'bar'
-$batterystyle = 'bar'
+$cpustyle = 'bartext'
+$memorystyle = 'bartext'
+$diskstyle = 'textbar'
+$batterystyle = 'bartext'
 
 
 # Remove the '#' from any of the lines in
@@ -71,23 +71,23 @@ $batterystyle = 'bar'
     "os"
     "kernel"
     "computer"
-    #"motherboard"
+    # "motherboard"
     "terminal"
     "pwsh"
     "pkgs"  # takes more time
     "ps_pkgs"  # takes some time
     "custom_time"  # use custom info line
     "uptime"
-    #"resolution"
-    #"theme"
-    #"cpu"
-    #"gpu"
+    # "resolution"
+    # "theme"
+    "cpu"
+    "gpu"
     "cpu_usage"  # takes some time
     "memory"
-    #"disk"
-    #"battery"
+    "disk"
+    # "battery"
     #"locale"
-    #"weather"
+    # "weather"
     #"local_ip"
     #"public_ip"
     "blank"
