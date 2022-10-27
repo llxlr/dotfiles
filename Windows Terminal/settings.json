@@ -4,14 +4,6 @@
     "actions": 
     [
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
             "command": 
             {
                 "action": "copy",
@@ -20,13 +12,25 @@
             "keys": "ctrl+c"
         },
         {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
             },
-            "keys": "alt+shift+d"
+            "keys": "alt+shift+|"
+        },
+        {
+            "command": "toggleFocusMode",
+            "keys": "win+f11"
         }
     ],
     "alwaysOnTop": false,
@@ -141,7 +145,7 @@
                 "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "~",
-                "tabColor": "#fc9517"
+                "tabColor": "#FC9517"
             },
             {
                 "commandline": "wsl.exe -d Arch",
@@ -151,16 +155,16 @@
                 "name": "Arch",
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "~",
-                "tabColor": "#91d0ea"
+                "tabColor": "#91D0EA"
             },
             {
                 "guid": "{4d4cc780-cacb-5b6f-a183-29b5f6cdcd23}",
-                "hidden": false,
+                "hidden": true,
                 "icon": "https://www.centos.org/assets/img/favicon.png",
                 "name": "CentOS",
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "~",
-                "tabColor": "#943de2"
+                "tabColor": "#943DE2"
             },
             {
                 "commandline": "ssh.exe -X pi",
@@ -168,7 +172,7 @@
                 "icon": "https://www.raspberrypi.org/favicon.ico",
                 "name": "Raspberry Pi",
                 "startingDirectory": "~",
-                "tabColor": "#cb298e"
+                "tabColor": "#CB298E"
             },
             {
                 "commandline": "ssh.exe aliyun",
