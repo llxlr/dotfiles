@@ -1,4 +1,51 @@
 return {
+  ["williamboman/mason.nvim"] = {
+    override_options = {
+      ensure_installed = {
+        -- lua stuff
+        "lua-language-server",
+        "stylua",
+
+        -- web dev
+        "css-lsp",
+        "html-lsp",
+        "typescript-language-server",
+        "deno",
+        "emmet-ls",
+        "json-lsp",
+        "yaml-language-server",
+        "eslint-lsp",
+
+        -- shell
+        "shfmt",
+        "shellcheck",
+
+        -- c/c++
+        "clangd",
+
+        -- golang
+        "gopls",
+
+        -- python
+        "python-lsp-server",
+        "autopep8",
+        "black",
+        "isort",
+        "mypy",
+        "pylint",
+
+        -- sql
+        "sqls",
+
+        -- latex
+        "texlab",
+
+        -- vue
+        "vue-language-server",
+      },
+    },
+  },
+
   ["wakatime/vim-wakatime"] = {},
 
   ["zpyg/CodeRunner.nvim"] = {
@@ -40,8 +87,8 @@ return {
       vim.g.vimtex_quickfix_mode = 0
       -- 设置 PDF 阅读器
       -- Windows
-      vim.g.imtex_view_method = '"D:/Program Files/SumatraPDF/SumatraPDF.exe"'
-      vim.g.vimtex_view_general_viewer = '"D:/Program Files/SumatraPDF/SumatraPDF.exe"'
+      vim.g.imtex_view_method = '"C:/Program Files/SumatraPDF/SumatraPDF.exe"'
+      vim.g.vimtex_view_general_viewer = '"C:/Program Files/SumatraPDF/SumatraPDF.exe"'
       vim.g.vimtex_view_general_options = ' -reuse-instance -forward-search @tex @line @pdf'
         .. ' -inverse-search "' . 'cmd /c start /min \"\" ' .. exepath(v:progpath)
         .. ' -v --not-a-term -T dumb -c  \"VimtexInverseSearch %l ''%f''\""'
@@ -87,5 +134,44 @@ return {
   },
 
   ["honza/vim-snippets"] = {},
+
+  ["iamcco/markdown-preview.nvim"] = {
+    run = "cd app && npm install",
+    config = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+
+  ["ekickx/clipboard-image.nvim"] = {
+    opt = true,
+    config = function()
+      require"clipboard-image".setup {
+        default = {
+          img_dir = "images",
+          img_name = function() return os.date('%Y-%m-%d-%H-%M-%S') end,
+          affix = "<\n  %s\n>"
+        },
+        markdown = {
+          img_dir = {"src", "assets", "img"},
+          img_dir_txt = "/assets/images",
+          img_handler = function(img)
+            local script = string.format('./image_compressor.sh "%s"', img.path)
+            os.execute(script)
+          end,
+        }
+      }
+    end,
+  },
+
+  ["askfiy/nvim-picgo"] = {
+    config = function()
+      require"nvim-picgo".setup {
+        notice = "notify",
+        image_name = false,
+        debug = false,
+      }
+    end,
+  },
 
 }

@@ -11,4 +11,13 @@ M.coderunner = {
   },
 }
 
+-- M.markdownpreview = {
+--   n = {
+--     -- 预览
+--     [""] = { "<CMD> MarkdownPreview <CR>", "" },
+--     -- 停止预览
+--     [""] = { "<CMD> MarkdownPreviewStop <CR>", "" },
+--   }
+-- }
+
 return M

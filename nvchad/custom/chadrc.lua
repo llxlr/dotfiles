@@ -1,3 +1,5 @@
+-- 覆盖 default_config.lua 文件选项
+
 local M = {}
 
 local userPlugins = require "custom.plugins"
@@ -14,6 +16,8 @@ M.options = {
 }
 
 M.ui = {
+  -- hl = highlights
+  hl_add = {},
   hl_override = {},
   changed_themes = {},
   theme_toggle = { "onedark", "one_light" },
