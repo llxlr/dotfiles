@@ -148,6 +148,14 @@
                 "tabColor": "#FC9517"
             },
             {
+                "commandline": "ssh.exe vm-centos",
+                "guid": "{cd927720-8434-4691-b04e-aa4f12c2c626}",
+                "hidden": false,
+                "icon": "https://www.centos.org/assets/img/favicon.png",
+                "name": "CentOS",
+                "startingDirectory": "~"
+            },
+            {
                 "commandline": "wsl.exe -d Arch",
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
                 "hidden": false,
@@ -156,15 +164,6 @@
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "~",
                 "tabColor": "#91D0EA"
-            },
-            {
-                "guid": "{4d4cc780-cacb-5b6f-a183-29b5f6cdcd23}",
-                "hidden": true,
-                "icon": "https://www.centos.org/assets/img/favicon.png",
-                "name": "CentOS",
-                "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "~",
-                "tabColor": "#943DE2"
             },
             {
                 "commandline": "ssh.exe -X pi",
