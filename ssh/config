@@ -52,7 +52,7 @@ Host pi
     IdentityFile ~/.ssh/others/raspberrypi/id_rsa.pem
 
 Host vm-centos
-    HostName 192.168.1.165
+    HostName 192.168.37.130
     Port 22
     User root
     ServerAliveInterval 60
