@@ -1,0 +1,8 @@
+[system-distro-env]
+WESTON_RDP_DISABLE_FRACTIONAL_HI_DPI_SCALING=false
+
+;start menu with distro name
+WESTON_RDPRAIL_SHELL_DISABLE_APPEND_DISTRONAME_STARTMENU=true
+
+;restart weston compositor and Xwayland by Left-Ctrl + Left-Atl + Backspace
+WESTON_RDPRAIL_SHELL_ALLOW_ZAP=true

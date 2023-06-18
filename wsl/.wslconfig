@@ -1,0 +1,12 @@
+[wsl2]
+networkingMode = bridged
+vmSwitch = WSLBridge
+ipv6 = true
+#kernel = C:\\ProgramData\\WSL-Kernel\\kernel
+#kernelCommandLine = 
+memory = 4GB # Limits VM memory in WSL 2 to 4 GB
+processors = 4 # Makes the WSL 2 VM use two virtual processors
+localhostForwarding = true
+swap = 1GB
+swapFile = C:\\Users\\i\\AppData\\Local\\Temp\\swap.vhdx
+guiApplications = true
