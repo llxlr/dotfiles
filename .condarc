@@ -22,3 +22,4 @@ pkgs_dirs:
   - /tmp/conda/pkgs
 report_errors: false
 auto_activate_base: false
+solver: libmamba

@@ -1,57 +1,56 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
-    [
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+|"
-        },
-        {
-            "command": "toggleFocusMode",
-            "keys": "win+f11"
-        }
-    ],
+
+    // 默认
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "theme": "Custom",
+
+    // 窗口设置
+    "centerOnLaunch": true,
+    "focusFollowMouse": true,
+    "initialRows": 25,
+    "initialCols": 100,
+    "initialPosition": "402,175",
+    "windowingBehavior": "useAnyExisting",
+
+    // 标签页
     "alwaysOnTop": false,
     "alwaysShowNotificationIcon": false,
     "alwaysShowTabs": true,
+    "useAcrylicInTabRow": true,
+    "showTabsInTitlebar": true,
+    "showTerminalTitleInTitlebar": true,
+    "tabWidthMode": "equal",
+
+    // 文本选择
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "trimBlockSelection": true,
+    "wordDelimiters": " ./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}~?\u2502",
+
+    // 实验性设置
     "experimental.rendering.forceFullRepaint": true,
     "experimental.rendering.software": true,
-    "focusFollowMouse": true,
-    "initialCols": 100,
-    "initialRows": 25,
+
+    // 新标签页菜单
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+
+    // 配置方案
     "profiles": 
     {
         "defaults": 
         {
+            "adjustIndistinguishableColors": "always",
             "antialiasingMode": "cleartype",
             "backgroundImage": "https://i.xhlr.top/bg.png",
             "backgroundImageAlignment": "right",
-            "backgroundImageOpacity": 0.10000000000000001,
+            "backgroundImageOpacity": 0.1,
             "backgroundImageStretchMode": "uniform",
             "bellStyle": "audible",
             "colorScheme": "One Half Dark",
@@ -60,16 +59,17 @@
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "SauceCodePro Nerd Font Mono",
-                "size": 14
+                "face": "SauceCodePro Nerd Font",
+                "size": 14.0
             },
             "historySize": 9001,
             "opacity": 65,
             "padding": "8",
-            "scrollbarState": "hidden",
+            "scrollbarState": "visible",
             "startingDirectory": "%USERPROFILE%",
             "suppressApplicationTitle": true,
-            "useAcrylic": false
+            "useAcrylic": false,
+            "useAtlasEngine": true
         },
         "list": 
         [
@@ -82,16 +82,26 @@
                 "tabColor": "#70F3FF"
             },
             {
+                "backgroundImageOpacity": 0.1,
                 "colorScheme": "TokyoNightStorm",
                 "commandline": "pwsh.exe -NoLogo -NoExit",
                 "experimental.retroTerminalEffect": false,
+                "font": 
+                {
+                    "face": "SauceCodePro Nerd Font"
+                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/pwsh-preview.png",
                 "name": "PowerShell",
+                "opacity": 75,
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
+                "backgroundImage": "https://www.loliapi.com/acg/",
+                "backgroundImageAlignment": "center",
+                "backgroundImageStretchMode": "uniformToFill",
+                "colorScheme": "Fluent Design Dark",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "icon": "\ue756",
@@ -102,7 +112,7 @@
                 "commandline": "cmd.exe /k \"%CMDER_ROOT%\\vendor\\init.bat\"",
                 "font": 
                 {
-                    "size": 11
+                    "size": 11.0
                 },
                 "guid": "{5c5fdab6-843d-4ce4-8f0e-571421d71528}",
                 "hidden": true,
@@ -136,10 +146,10 @@
                 "commandline": "wsl.exe -d Ubuntu",
                 "font": 
                 {
-                    "face": "UbuntuMono Nerd Font Mono",
-                    "size": 16
+                    "face": "UbuntuMono Nerd Font",
+                    "size": 16.0
                 },
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
                 "icon": "https://ubuntu.com/favicon.ico",
                 "name": "Ubuntu",
@@ -157,16 +167,6 @@
                 "tabColor": "#6A5ACD"
             },
             {
-                "commandline": "wsl.exe -d Arch",
-                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
-                "hidden": false,
-                "icon": "https://archlinux.org/favicon.ico",
-                "name": "Arch",
-                "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "~",
-                "tabColor": "#91D0EA"
-            },
-            {
                 "commandline": "ssh.exe -X pi",
                 "guid": "{1b5eac30-c4ec-4b26-b2fa-fc0f77aa1598}",
                 "icon": "https://www.raspberrypi.org/favicon.ico",
@@ -178,7 +178,7 @@
                 "commandline": "ssh.exe aliyun",
                 "guid": "{f0963317-4e34-4560-b41f-756d6033b95d}",
                 "hidden": false,
-                "icon": "https://cn.aliyun.com/favicon.ico",
+                "icon": "https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico",
                 "name": "Aliyun",
                 "startingDirectory": "~"
             },
@@ -206,6 +206,8 @@
             }
         ]
     },
+
+    // 配色方案
     "schemes": 
     [
         {
@@ -276,6 +278,98 @@
             "selectionBackground": "#44475A",
             "white": "#BBBBBB",
             "yellow": "#F1FA8C"
+        },
+        {
+            "background": "#202020",
+            "black": "#202020",
+            "blue": "#76B9ED",
+            "brightBlack": "#272727",
+            "brightBlue": "#A6D8FF",
+            "brightCyan": "#B3F4F5",
+            "brightGreen": "#90D690",
+            "brightPurple": "#F7B8FF",
+            "brightRed": "#FFBDC2",
+            "brightWhite": "#CCCCCC",
+            "brightYellow": "#FFE8A8",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#80D6D9",
+            "foreground": "#FFFFFF",
+            "green": "#61BA61",
+            "name": "Fluent Design Dark",
+            "purple": "#E893F4",
+            "red": "#FF99A1",
+            "selectionBackground": "#FFFFFF",
+            "white": "#FFFFFF",
+            "yellow": "#FFE08C"
+        },
+        {
+            "background": "#F3F3F3",
+            "black": "#1A1A1A",
+            "blue": "#005A9E",
+            "brightBlack": "#5C5C5C",
+            "brightBlue": "#004275",
+            "brightCyan": "#00393B",
+            "brightGreen": "#094209",
+            "brightPurple": "#470C4F",
+            "brightRed": "#6E0009",
+            "brightWhite": "#F9F9F9",
+            "brightYellow": "#805E00",
+            "cursorColor": "#1A1A1A",
+            "cyan": "#005659",
+            "foreground": "#1A1A1A",
+            "green": "#0C5C0C",
+            "name": "Fluent Design Light",
+            "purple": "#62116E",
+            "red": "#99000D",
+            "selectionBackground": "#1A1A1A",
+            "white": "#F3F3F3",
+            "yellow": "#BA8900"
+        },
+        {
+            "background": "#1D1F21",
+            "black": "#1D1F21",
+            "blue": "#3971ED",
+            "brightBlack": "#969896",
+            "brightBlue": "#3971ED",
+            "brightCyan": "#3971ED",
+            "brightGreen": "#198844",
+            "brightPurple": "#A36AC7",
+            "brightRed": "#CC342B",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FBA922",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3971ED",
+            "foreground": "#C5C8C6",
+            "green": "#198844",
+            "name": "Google Dark",
+            "purple": "#A36AC7",
+            "red": "#CC342B",
+            "selectionBackground": "#FFFFFF",
+            "white": "#C5C8C6",
+            "yellow": "#FBA922"
+        },
+        {
+            "background": "#FFFFFF",
+            "black": "#1D1F21",
+            "blue": "#3971ED",
+            "brightBlack": "#969896",
+            "brightBlue": "#3971ED",
+            "brightCyan": "#3971ED",
+            "brightGreen": "#198844",
+            "brightPurple": "#A36AC7",
+            "brightRed": "#CC342B",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FBA922",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3971ED",
+            "foreground": "#373B41",
+            "green": "#198844",
+            "name": "Google Light",
+            "purple": "#A36AC7",
+            "red": "#CC342B",
+            "selectionBackground": "#FFFFFF",
+            "white": "#C5C8C6",
+            "yellow": "#FBA922"
         },
         {
             "background": "#272822",
@@ -508,9 +602,56 @@
             "yellow": "#808000"
         }
     ],
-    "showTabsInTitlebar": true,
-    "tabWidthMode": "equal",
-    "trimBlockSelection": true,
-    "useAcrylicInTabRow": true,
-    "windowingBehavior": "useAnyExisting"
+
+    // 主题
+    "themes": [
+        {
+            "name": "Custom",
+            "tab":
+            {
+                "showCloseButton": "hover"
+            },
+            "window":
+            {
+                "applicationTheme": "system",
+                "frame": "accent",
+                "experimental.rainbowFrame": true,
+                "useMica": false
+            }
+        }
+    ],
+
+    // 快捷键
+    "actions": 
+    [
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+\\"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
+        },
+        {
+            "command": "toggleFocusMode",
+            "keys": "win+f11"
+        }
+    ]
 }

@@ -1,0 +1,14 @@
+{
+  "registry-mirrors": [
+    "https://registry.docker-cn.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://cr.console.aliyun.com",
+    "https://mirror.ccs.tencentyun.com",
+    "http://hub-mirror.c.163.com",
+  ],
+  "insecure-registries": [
+    "https://ower.site.com",
+  ],
+  "live-restore": true,
+  "iptables": false,
+}

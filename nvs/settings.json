@@ -1,0 +1,8 @@
+{
+  "aliases": {},
+  "remotes": {
+    "default": "node",
+    "node": "https://npmmirror.com/mirrors/node/"
+  },
+  "linkToSystem": true
+}

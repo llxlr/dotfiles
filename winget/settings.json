@@ -1,0 +1,24 @@
+{
+    "$schema": "https://aka.ms/winget-settings.schema.json",
+
+    // For documentation on these settings, see: https://aka.ms/winget-settings
+    "source": {
+       "autoUpdateIntervalInMinutes": 5
+    },
+    "visual": {
+        "progressBar": "rainbow",
+        "anonymizeDisplayedPaths": true
+    },
+    "installBehavior": {
+        "disableInstallNotes": false,
+        "portablePackageUserRoot": "C:/Users/i/Packages",
+        "portablePackageMachineRoot": "C:/Program Files/WinGet/Packages",
+        "skipDependencies": false,
+        "preferences": {
+            "scope": "user",
+            "locale": ["zh-CN", "en-US"],
+            "architectures": ["x64"],
+            "installerTypes": ["msi", "msix", "exe", "zip"]
+        }
+    }
+}

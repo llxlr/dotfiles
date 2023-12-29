@@ -28,7 +28,7 @@ Host wsl2
     IdentityFile ~/.ssh/id_rsa
 
 Host aliyun
-    HostName a.white-album.top
+    HostName a.server
     Port 22
     User root
     ServerAliveInterval 60
@@ -36,7 +36,7 @@ Host aliyun
     IdentityFile ~/.ssh/others/server/id_rsa.pem
 
 Host tencent
-    HostName t.white-album.top
+    HostName t.server
     Port 22
     User root
     ServerAliveInterval 60
@@ -59,3 +59,10 @@ Host vm-centos
     ServerAliveCountMax 3
     IdentityFile ~/.ssh/others/vm/id_rsa.pem
 
+Host vm-ubuntu
+    HostName ubuntu.local
+    Port 22
+    User i
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    IdentityFile ~/.ssh/others/vm/id_rsa.pem

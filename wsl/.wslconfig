@@ -1,12 +1,50 @@
+# https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config#wslconfig
 [wsl2]
-networkingMode = bridged
-vmSwitch = WSLBridge
-ipv6 = true
+# 限制 WSL2 虚拟机内存 4 GB
+memory = 4GB
+# WSL2 虚拟机使用 4 个虚拟进程
+processors = 4
+# 自定义内核路径
 #kernel = C:\\ProgramData\\WSL-Kernel\\kernel
-#kernelCommandLine = 
-memory = 4GB # Limits VM memory in WSL 2 to 4 GB
-processors = 4 # Makes the WSL 2 VM use two virtual processors
-localhostForwarding = true
+# 内核指令
+kernelCommandLine = vsyscall=emulate; sysctl.net.ipv6.conf.default.autoconf=0
+# 交换分区
 swap = 1GB
+# 交换分区磁盘文件
 swapFile = C:\\Users\\i\\AppData\\Local\\Temp\\swap.vhdx
+# 镜像模式
+networkingMode = mirrored
+# 本地回环转发
+localhostForwarding = true
+# Windows 防火墙规则以及特定于 Hyper-V 流量的规则可以筛选 WSL 网络流量。
+firewall = true
+# 更改将 DNS 请求从 WSL 代理到 Windows 的方式。
+dnsTunneling = true
+# 强制 WSL 使用 Windows 的 HTTP 代理信息
+autoProxy = true
+# 用于在 WSL 中打开或关闭对 GUI 应用程序 (WSLg) 的支持
 guiApplications = true
+# VM 在关闭之前处于空闲状态的毫秒数。
+vmIdleTimeout = 60000
+# 用于打开或关闭嵌套虚拟化的布尔值，使其他嵌套 VM 能够在 WSL 2 中运行。 仅适用于 Windows 11。
+nestedVirtualization = false
+# 用于在 WSL 2 发行版实例启动时打开显示 dmesg 内容的输出控制台窗口。 仅适用于 Windows 11。
+debugConsole = false
+
+[experimental]
+# 自动回收缓存内存
+autoMemoryReclaim = gradual
+# 自动磁盘清理
+sparseVhd = true
+# 如果此选项设置为 false，则从 Linux 隧道传输的 DNS 请求将绕过 Windows 中的缓存名称，以始终将请求放在网络上。
+useWindowsDnsCache = false
+# Windows 将从 DNS 请求中提取问题并尝试解决该问题，从而忽略未知记录。
+bestEffortDnsParsing = true
+# 配置启动 WSL 容器时，WSL 等待检索 HTTP 代理信息的时长（以毫秒为单位）。 如果代理设置在此时间之后解析，则必须重启 WSL 实例才能使用检索到的代理设置。
+initialAutoProxyTimeout = 1000
+# 禁用页面报告功能，以便 WSL 保留从 Windows 申请的所有已分配内存，并在空闲时释放所有内存。
+#pageReporting = false
+# 允许容器通过分配给主机的 IP 地址连接到主机，或允许主机通过此方式连接到容器。 请注意，始终可以使用 127.0.0.1 环回地址 - 此选项也允许使用所有额外分配的本地 IP 地址。
+hostAddressLoopback = true
+# 指定 Linux 应用程序可以绑定到哪些端口（即使该端口已在 Windows 中使用）。 通过此设置，应用程序能够仅侦听 Linux 中的流量端口，因此即使该端口在 Windows 上用于其他用途，这些应用程序也不会被阻止。 例如，WSL 将允许绑定到 Linux for Docker Desktop 中的端口 53，因为它只侦听来自 Linux 容器中的请求。 应在逗号分隔列表中设置格式，例如：3000,9000,9090
+ignoredPorts = 3000,9000,9090
