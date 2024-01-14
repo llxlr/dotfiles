@@ -9,42 +9,26 @@
           "background": "transparent",
           "foreground": "#1865f5",
           "properties": {
-            "alpine": "\uf300",
-            "arch": "\uf303",
-            "centos": "\uf304",
-            "debian": "\uf306",
-            "elementary": "\uf309",
-            "fedora": "\uf30a",
-            "gentoo": "\uf30d",
             "linux": "\ue712",
-            "macos": "\uf179 ",
-            "manjaro": "\uf312",
-            "mint": "\uf30f",
-            "opensuse": "\uf314",
-            "raspbian": "\uf315",
-            "ubuntu": "\uf31c ",
-            "windows": "\uf871 ",
-            "wsl": "\ue712",
-            "wsl_separator": " on "
+            "macos": "\ue711",
+            "ubuntu": "\ue73a",
+            "windows": "\ue62a",
+            "display_distro_name": true
           },
           "style": "diamond",
-          "template": "{{ if .WSL }}WSL at {{ end }}{{ .Icon }}",
+          "template": "{{ if .WSL }}\ue712 {{ end }}{{ .Icon }} ",
           "type": "os"
         },
         {
           "background": "transparent",
           "foreground": "#e06c75",
           "style": "plain",
-          "template": "admin",
+          "template": "\uF0E7",
           "type": "root"
         },
         {
           "background": "transparent",
           "foreground": "#100e23",
-          "properties": {
-            "display_user": true,
-            "display_host": false
-          },
           "style": "diamond",
           "template": "{{ if .SSHSession }}\uF817 {{ end }}{{ if .Root }}<#801dae>@</><#1865f5>{{ .HostName }}</>{{ else }}<#45f1c2>{{ .UserName }}</><#801dae>@</><#1865f5>{{ .HostName }}</>{{ end }} ",
           "type": "session"
@@ -57,14 +41,14 @@
             "style": "full",
             "mapped_locations": {
               "C:/Users/i/AppData/Local/Temp": "\uf114",
-              "D:/Projects/GitHub": "\ue708",
-              "D:/Projects/PyCharmProjects": "\ue235",
-              "D:/Projects/R": "\ufcd2",
-              "D:/Projects/www": "\ufa9e",
-              "D:/envs/gopath/src": "\ue724",
-              "E:/OneDrive": "\ue762",
-              "E:/Games": "\ue25f",
-              "E:/Documents/Markdown": "\ue73e"
+              "D:/Documents/GitHub": "\ue708",
+              "D:/Documents/PyCharmProjects": "\ue235",
+              "D:/Documents/R": "\ufcd2",
+              "D:/Documents/www": "\ufa9e",
+              "D:/Documents/gopath/src": "\ue724",
+              "D:/OneDrive": "\ue762",
+              "D:/Games": "\ue25f",
+              "D:/OneDrive/Markdown": "\ue73e"
             }
           },
           "style": "plain",
@@ -123,7 +107,7 @@
           "foreground": "#ffe873",
           "properties": {
             "fetch_version": true,
-            "display_virtual_env": true,
+            "fetch_virtual_env": true,
             "display_default": true,
             "display_mode": "context"
           },
@@ -158,7 +142,7 @@
             "always_enabled": true
           },
           "style": "plain",
-          "template": "\uf64e {{ .FormattedMs }} ",
+          "template": "\ueb58 {{ .FormattedMs }} ",
           "type": "executiontime"
         },
         {
@@ -167,9 +151,15 @@
           "properties": {
             "always_enabled": true
           },
-          "style": "plain",
+          "style": "diamond",
           "template": "{{ if gt .Code 0 }}<#ff0000>\uf00d</>{{ else }}\uf42e{{ end }} ",
           "type": "exit"
+        },
+        {
+          "background": "transparent",
+          "foreground": "transparent",
+          "style": "plain",
+          "type": "upgrade"
         }
       ]
     },
@@ -184,6 +174,25 @@
           "style": "plain",
           "template": "{{ if .Root }}<#e06c75>#</>{{ else }}${{ end }}",
           "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "newline": true,
+      "segments": [
+        {
+          "background": "transparent",
+          "foreground": "#ffffff",
+          "properties": {
+            "url": "https://wakatime.com/api/v1/users/current/summaries?start=today&end=today&api_key={{ .Env.WAKATIME_API_KEY }}",
+            "cache_timeout": 10,
+            "http_timeout": 500
+          },
+          "style": "plain",
+          "template": "{{ secondsRound .CumulativeTotal.Seconds }}",
+          "type": "wakatime"
         }
       ]
     }
