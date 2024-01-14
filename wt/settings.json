@@ -34,18 +34,44 @@
     "experimental.rendering.software": true,
 
     // 新标签页菜单
-    "newTabMenu": 
-    [
+    "newTabMenu": [
+        { "type": "remainingProfiles" },
+        { "type":"separator" },
         {
-            "type": "remainingProfiles"
-        }
+            "type":"folder",
+            "name": "SSH",
+            "icon": "\ue8af",
+            "allowEmpty": true,
+            "inline": "auto",
+            "entries":
+            [
+                { "type":"profile", "profile": "CentOS" },
+                { "type":"profile", "profile": "RHEL" },
+                { "type":"profile", "profile": "Raspberry Pi" },
+                { "type":"profile", "profile": "Aliyun" },
+                { "type":"profile", "profile": "Tencent Cloud" },
+            ]
+        },
+        {
+            "type":"folder",
+            "name": "Serial",
+            "icon": "\uf260",
+            "allowEmpty": true,
+            "inline": "auto",
+            "entries":
+            [
+                { "type":"profile", "profile": "PuTTY COM" },
+                { "type":"profile", "profile": "Picocom" },
+                { "type":"profile", "profile": "Serial For Windows Terminal" },
+                { "type":"profile", "profile": "SimplySerial" },
+                { "type":"profile", "profile": "" },
+            ]
+        },
     ],
 
     // 配置方案
-    "profiles": 
-    {
-        "defaults": 
-        {
+    "profiles": {
+        "defaults": {
             "adjustIndistinguishableColors": "always",
             "antialiasingMode": "cleartype",
             "backgroundImage": "https://i.xhlr.top/bg.png",
@@ -71,8 +97,7 @@
             "useAcrylic": false,
             "useAtlasEngine": true
         },
-        "list": 
-        [
+        "list": [
             {
                 "colorScheme": "Campbell Powershell",
                 "commandline": "powershell.exe -NoLogo -NoExit",
@@ -82,14 +107,8 @@
                 "tabColor": "#70F3FF"
             },
             {
-                "backgroundImageOpacity": 0.1,
                 "colorScheme": "TokyoNightStorm",
                 "commandline": "pwsh.exe -NoLogo -NoExit",
-                "experimental.retroTerminalEffect": false,
-                "font": 
-                {
-                    "face": "SauceCodePro Nerd Font"
-                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/pwsh-preview.png",
@@ -167,6 +186,15 @@
                 "tabColor": "#6A5ACD"
             },
             {
+                "commandline": "ssh.exe vm-rhel",
+                "guid": "{b658b12f-1824-45a5-a145-5eb9327ef896}",
+                "hidden": false,
+                "icon": "https://www.redhat.com/favicon.ico",
+                "name": "RHEL",
+                "startingDirectory": "~",
+                "tabColor": "#EE0000"
+            },
+            {
                 "commandline": "ssh.exe -X pi",
                 "guid": "{1b5eac30-c4ec-4b26-b2fa-fc0f77aa1598}",
                 "icon": "https://www.raspberrypi.org/favicon.ico",
@@ -191,25 +219,38 @@
                 "startingDirectory": "~"
             },
             {
-                "commandline": "plink.exe -load \"Default Settings\"",
-                "guid": "{85530f92-e476-4121-a108-cfc8a67cddf0}",
-                "hidden": false,
-                "icon": "\uf260",
-                "name": "PuTTY COM Session"
-            },
-            {
-                "commandline": "plink.exe -load \"COM\"",
+                "commandline": "plink.exe -v -serial COM1 -sercfg 115000,8,1,n,N",
                 "guid": "{3f385183-dc55-49bc-a90a-f54c4aaba332}",
                 "hidden": false,
-                "icon": "\uf260",
+                "icon": "",
                 "name": "PuTTY COM"
+            },
+            {
+                "commandline": "wsl.exe -d Ubuntu picocom",
+                "guid": "{ba4f9b1d-b823-42a6-a291-4c43ec97aaab}",
+                "hidden": false,
+                "icon": "",
+                "name": "Picocom"
+            },
+            {
+                "commandline": "SerialForWindowsTerminal.exe",
+                "guid": "{e5e310f1-d0a3-4c37-a071-658611d963fe}",
+                "hidden": false,
+                "icon": "",
+                "name": "Serial For Windows Terminal"
+            },
+            {
+                "commandline": "ss.exe",
+                "guid": "{e9039735-1522-4fa4-929c-40eccbc43833}",
+                "hidden": false,
+                "icon": "",
+                "name": "SimplySerial"
             }
         ]
     },
 
     // 配色方案
-    "schemes": 
-    [
+    "schemes": [
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -600,7 +641,7 @@
             "selectionBackground": "#FFFFFF",
             "white": "#C0C0C0",
             "yellow": "#808000"
-        }
+        },
     ],
 
     // 主题
@@ -618,40 +659,18 @@
                 "experimental.rainbowFrame": true,
                 "useMica": false
             }
-        }
+        },
     ],
 
     // 快捷键
-    "actions": 
-    [
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+\\"
-        },
-        {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "toggleFocusMode",
-            "keys": "win+f11"
-        }
+    "actions": [
+        { "command": "find", "keys": "ctrl+shift+f" },
+        { "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+\\" },
+        { "command": "paste", "keys": "ctrl+v" },
+        { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+        { "command": "toggleFocusMode", "keys": "win+f11" },
+        { "command": { "action": "sendInput", "input": "git clone " }, "keys": "ctrl+alt+g" },
+        // 禁用快捷键绑定
+        { "command": "unbound", "keys": "alt+enter" },
     ]
 }
