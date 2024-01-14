@@ -5,19 +5,45 @@
 # chmod 600 ~/.ssh/authorized_keys
 # ssh-keygen -t rsa -C "<email>"
 # ssh-keygen -t rsa -m PEM -C "<email>"
+# ssh-add ~/.ssh/id_rsa
 # ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
 # cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 # scp ~/.ssh/id_rsa.pub root@host:/root/.ssh/authorized_keys
 # ssh -T git@github.com
 # ssh -T git@gitee.com
 
+#Windows
+#ProxyCommand "C:\Program Files\Git\mingw64\bin\connect.exe" -S 127.0.0.1:7890 -a none %h %p
+#MacOS
+#ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
+
+#Host github.com
+#  Hostname ssh.github.com
+#  User git
+#  Port 443
+#  IdentityFile ~/.ssh/id_rsa
+#  TCPKeepAlive yes
+
+#Host ssh.github.com
+#  Hostname ssh.github.com
+#  User git
+#  Port 443
+#  IdentityFile ~/.ssh/id_rsa
+#  TCPKeepAlive yes
+
 Host github
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_rsa
+    ForwardAgent yes
 
 Host gitee
     HostName gitee.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+
+Host hf
+    HostName hf.co
     User git
     IdentityFile ~/.ssh/id_rsa
 
@@ -26,6 +52,7 @@ Host wsl2
     Port 22
     User i
     IdentityFile ~/.ssh/id_rsa
+    ForwardAgent yes
 
 Host aliyun
     HostName a.server
@@ -59,10 +86,10 @@ Host vm-centos
     ServerAliveCountMax 3
     IdentityFile ~/.ssh/others/vm/id_rsa.pem
 
-Host vm-ubuntu
-    HostName ubuntu.local
+Host vm-rhel
+    HostName rhel.local
     Port 22
-    User i
+    User root
     ServerAliveInterval 60
     ServerAliveCountMax 3
     IdentityFile ~/.ssh/others/vm/id_rsa.pem
