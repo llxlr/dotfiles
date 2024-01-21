@@ -219,14 +219,14 @@
                 "startingDirectory": "~"
             },
             {
-                "commandline": "plink.exe -v -serial COM1 -sercfg 115000,8,1,n,N",
+                "commandline": "plink.exe -v -serial COM7 -sercfg 115200,8,1,n,N",
                 "guid": "{3f385183-dc55-49bc-a90a-f54c4aaba332}",
                 "hidden": false,
                 "icon": "",
                 "name": "PuTTY COM"
             },
             {
-                "commandline": "wsl.exe -d Ubuntu picocom",
+                "commandline": "wsl.exe -d Ubuntu picocom --baud 115200 /dev/ttyUSB0",
                 "guid": "{ba4f9b1d-b823-42a6-a291-4c43ec97aaab}",
                 "hidden": false,
                 "icon": "",
@@ -240,7 +240,7 @@
                 "name": "Serial For Windows Terminal"
             },
             {
-                "commandline": "ss.exe",
+                "commandline": "ss.exe -com:7 -baud:115200",
                 "guid": "{e9039735-1522-4fa4-929c-40eccbc43833}",
                 "hidden": false,
                 "icon": "",
