@@ -154,12 +154,6 @@
           "style": "diamond",
           "template": "{{ if gt .Code 0 }}<#ff0000>\uf00d</>{{ else }}\uf42e{{ end }} ",
           "type": "exit"
-        },
-        {
-          "background": "transparent",
-          "foreground": "transparent",
-          "style": "plain",
-          "type": "upgrade"
         }
       ]
     },
