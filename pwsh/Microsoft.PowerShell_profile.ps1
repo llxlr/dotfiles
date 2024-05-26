@@ -9,29 +9,31 @@
  * Update: Jan 18, 2024
 
 初始化配置:
-    PS> if (!(Test-Path -Path $Profile)) { New-Item -Type File -Path $Profile -Force }
-    PS> st $Profile || code $Profile || notepads $Profile || notepad $Profile
-    PS> . $Profile
+  PS> if (!(Test-Path -Path $Profile)) { New-Item -Type File -Path $Profile -Force }
+  PS> st $Profile || code $Profile || notepad $Profile
+  PS> . $Profile
 #>
 
+<# 环境变量 #>
+<#-----------------------------------------------------------------#>
 # UTF8
 #chcp 65001
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 $PSDefaultParameterValues["*:Encoding"] = "utf8"
 $env:PYTHONIOENCODING = "utf-8"
 $env:NLS_LANG = "SIMPLIFIED CHINESE_CHINA.UTF8"
-
 # 代理
-# $env:HTTP_PROXY="http://127.0.0.1:8080"
-# $env:HTTPS_PROXY="https://127.0.0.1:8080"
-# $env:TDL_PROXY="socks5://127.0.0.1:7890"
-
+#$env:HTTP_PROXY="http://127.0.0.1:8080"
+#$env:HTTPS_PROXY="https://127.0.0.1:8080"
+#$env:TDL_PROXY="socks5://127.0.0.1:7890"
 # X11
-$env:DISPLAY = "127.0.0.1:0"
+#$env:DISPLAY = "127.0.0.1:0"
+# Profile Home
+#$profilehome = Split-Path $profile
+<#-----------------------------------------------------------------#>
 
-#$Path = Split-Path $profile
-
-# 欢迎消息
+<# 欢迎消息 #>
+<#-----------------------------------------------------------------#>
 #$time = Get-date -Format "现在是 yyyy 年 M 月 d 日 H 时 m 分"
 #$Motd = $Path + "\motd.txt"
 $Path = $Pwd.path  # 获取路径
@@ -41,39 +43,29 @@ if ($path.split("\")[-1] -eq "Windows" -xor $path.split("\")[-1] -eq "System32")
 }
 #Write-Output $time
 #Get-Content $Motd
+<#-----------------------------------------------------------------#>
 
+<# 初始化 #>
+<#-----------------------------------------------------------------#>
 # Conda
 (& "$(Get-Command conda.exe)" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
-# ohmyposh
-oh-my-posh init pwsh --config ~/.config/omp/custom.json | Invoke-Expression
 # 1password
 op completion powershell | Out-String | Invoke-Expression
+# ohmyposh
+oh-my-posh init pwsh --config ~/.config/omp/custom.json | Invoke-Expression
+Enable-PoshTooltips
+Enable-PoshLineError
+Enable-PoshTransientPrompt
+<#-----------------------------------------------------------------#>
 
-# 导入模块
+<# 导入模块 #>
+<#-----------------------------------------------------------------#>
+# posh-git
 Import-Module posh-git
 $env:POSH_GIT_ENABLED = $true
-Import-Module PSReadLine
-If (!(Test-Path Variable:PSise)) {
-    Import-Module Get-ChildItemColor
-    $Global:GetChildItemColorVerticalSpace = 1
-    # 查看目录
-    Set-Alias ll Get-ChildItem -option AllScope
-    Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
-}
-Import-Module gsudoModule
-#34de4b3d-13a8-4540-b76d-b9e8d3851756 PowerToys CommandNotFound module
-Import-Module "C:\Program Files\PowerToys\WinUI3Apps\..\WinGetCommandNotFound.psd1"
-#34de4b3d-13a8-4540-b76d-b9e8d3851756
-Import-Module ZLocation
-Import-Module PSFzf
-Import-Module npm-completion
-Import-Module yarn-completion
-Import-Module "$env:SCOOP\modules\scoop-completion"
-if (Get-Module -ListAvailable -Name Get-Quote) {
-    Import-Module Get-Quote
-    Set-Alias fortune Get-Quote
-}
 
+# PSReadLine
+Import-Module PSReadLine
 # 设置预测命令来源为历史记录
 Set-PSReadLineOption -PredictionSource History -ShowToolTips
 # 每次回溯输入历史，光标定位于输入内容末尾
@@ -89,40 +81,46 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 # 设置 Ctrl+z 为撤销
 Set-PSReadLineKeyHandler -Key "Ctrl+z" -Function Undo
 
-# ohmyposh
-Enable-PoshTooltips
-Enable-PoshLineError
-Enable-PoshTransientPrompt
+# Scoop
+Import-Module "$env:SCOOP\modules\scoop-completion"
+
+# GSudo
+Import-Module gsudoModule
+
+#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
+# Import-Module -Name Microsoft.WinGet.CommandNotFound
+#f45873b3-b655-43a6-b217-97c00aa0db58
 
 # psfzf
+Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+Import-Module ZLocation
+
+Import-Module npm-completion
+
+
+If (!(Test-Path Variable:PSise)) {
+    Import-Module Get-ChildItemColor
+    $Global:GetChildItemColorVerticalSpace = 1
+    # 查看目录
+    Set-Alias ll Get-ChildItem -option AllScope
+    Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
+}
+
+if (Get-Module -ListAvailable -Name Get-Quote) {
+    Import-Module Get-Quote
+    Set-Alias fortune Get-Quote
+}
+
+<#-----------------------------------------------------------------#>
 
 # 查找程序路径
 function WhereIs { (Get-Command $args).Source }
 
-# 打开目录，默认当前路径
-function OpenCurrentFolder {
-    param
-    (
-        $Path = "."
-    )
-    Invoke-Item $Path
-}
-Set-Alias e OpenCurrentFolder
-
 # 返回上级目录
 function .. { Set-Location ".." }
 function ... { Set-Location "../.." }
-
-# Colorful Git Log
-function GitLogPretty {
-    git.exe log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all
-}
-Set-Alias glp GitLogPretty
-
-# Lazy Git
-function LazyGit { lazygit.exe $args }
-Set-Alias lg LazyGit
 
 # 临时启动 Web Server
 function Start-WebServer { python.exe -m http.server --bind 127.0.0.1 }
@@ -138,10 +136,8 @@ If (Test-Path Alias:vi) { Remove-Item Alias:vi }
 function VI { nvim.exe $args }
 
 # figlet
-function Figlet {
-    #go install github.com/mbndr/figlet4go/cmd/figlet4go@latest
-    figlet4go.exe -str "$args" -font "larry3d" -colors "red;yellow;green;blue;magenta;cyan"
-}
+# go install github.com/mbndr/figlet4go/cmd/figlet4go@latest
+function Figlet { figlet4go.exe -str "$args" -font "larry3d" -colors "red;yellow;green;blue;magenta;cyan" }
 
 # music-player
 Set-Alias mpr music-player.exe
@@ -155,6 +151,51 @@ function Pipe { python.exe $(Get-Command maze.py).Source $args }
 # JaxoDraw
 function JaxoDraw { java.exe -jar $(Get-Command jaxodraw.jar).Source }
 
+# ssh-copy-id
+function SSH-Copy-Id { sh.exe $(where.exe ssh-copy-id) $args }
+
+# Colorful Git Log
+function GitLogPretty { git.exe log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all }
+Set-Alias glp GitLogPretty
+
+# 获取天气
+function Get-Weather { curl "wttr.in?0&lang=zh-cn" }
+Set-Alias gw Get-Weather
+
+# 获取 IP 地址
+function Get-IP { curl ip.sb }
+Set-Alias getip Get-IP
+
+# 获取 IPv4 地址
+function Get-IPv4 { curl -4 ip.sb }
+Set-Alias getipv4 Get-IPv4
+
+# 获取 IPv6 地址
+function Get-IPv6 { curl -6 ip.sb }
+Set-Alias getipv6 Get-IPv6
+
+# 获取所有网络接口
+function Get-AllNic { Get-NetAdapter | Sort-Object -Property MacAddress }
+Set-Alias getnic Get-AllNic
+
+# 获取 IPv4 路由地址
+function Get-IPv4Routes { Get-NetRoute -AddressFamily IPv4 | Where-Object -FilterScript {$_.NextHop -ne "0.0.0.0"} }
+Set-Alias getipv4r Get-IPv4Routes
+
+# 获取 IPv6 路由地址
+function Get-IPv6Routes { Get-NetRoute -AddressFamily IPv6 | Where-Object -FilterScript {$_.NextHop -ne "::"} }
+Set-Alias getipv6r Get-IPv6Routes
+
+# 打开目录，默认当前路径
+function OpenCurrentFolder {
+    param
+    (
+        $Path = "."
+    )
+    Invoke-Item $Path
+}
+Set-Alias e OpenCurrentFolder
+
 # npm package list
 function Npm-Packages {
     param
@@ -164,12 +205,8 @@ function Npm-Packages {
     npm list --location=$Location --depth 0
 }
 Set-Alias np Npm-Packages
-
 # pnpm
 Set-Alias -Name pn -Value pnpm
-
-# ssh-copy-id
-function SSH-Copy-Id { sh.exe $(where.exe ssh-copy-id) $args }
 
 # 更新系统组件
 function Update-Packages {
@@ -358,35 +395,3 @@ function Backup-Configs {
     }
 }
 Set-Alias bc Backup-Configs
-
-# 获取 IP 地址
-function Get-IP { curl ip.sb }
-Set-Alias getip Get-IP
-
-# 获取 IPv4 地址
-function Get-IPv4 { curl -4 ip.sb }
-Set-Alias getipv4 Get-IPv4
-
-# 获取 IPv6 地址
-function Get-IPv6 { curl -6 ip.sb }
-Set-Alias getipv6 Get-IPv6
-
-# 获取 IPv4 路由地址
-function Get-IPv4Routes {
-    Get-NetRoute -AddressFamily IPv4 | Where-Object -FilterScript {$_.NextHop -ne "0.0.0.0"}
-}
-Set-Alias getipv4r Get-IPv4Routes
-
-# 获取 IPv6 路由地址
-function Get-IPv6Routes {
-    Get-NetRoute -AddressFamily IPv6 | Where-Object -FilterScript {$_.NextHop -ne "::"}
-}
-Set-Alias getipv6r Get-IPv6Routes
-
-# 获取所有网络接口
-function Get-AllNic { Get-NetAdapter | Sort-Object -Property MacAddress }
-Set-Alias getnic Get-AllNic
-
-# 获取天气
-function Get-Weather { curl "wttr.in?0&lang=zh-cn" }
-Set-Alias gw Get-Weather
